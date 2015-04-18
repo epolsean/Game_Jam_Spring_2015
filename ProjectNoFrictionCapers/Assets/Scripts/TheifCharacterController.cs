@@ -17,13 +17,13 @@ public class TheifCharacterController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-	    if(Input.GetKey(KeyCode.A) && isSliding == false)
+	    if(Input.GetKey(KeyCode.A))
         {
             //this.GetComponent<Rigidbody>().isKinematic = false; 
             this.transform.Rotate(Vector3.up, -rotSpeed*Time.deltaTime); 
         }
 
-        if (Input.GetKey(KeyCode.D) && isSliding == false)
+        if (Input.GetKey(KeyCode.D))
         {
             //this.GetComponent<Rigidbody>().isKinematic = false; 
             this.transform.Rotate(Vector3.up, rotSpeed * Time.deltaTime);
@@ -33,7 +33,7 @@ public class TheifCharacterController : MonoBehaviour {
         {
             this.GetComponent<Rigidbody>().isKinematic = false; 
             this.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isJumping == false)
             {
                 moveSpeed += moveSpeed;
             }
@@ -44,13 +44,34 @@ public class TheifCharacterController : MonoBehaviour {
         {
             this.GetComponent<Rigidbody>().isKinematic = false; 
             this.transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
-            if(Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isJumping == false)
             {
                 moveSpeed += moveSpeed; 
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isSliding == false)
+        if (Input.GetKey(KeyCode.Q) && isSliding == false)
+        {
+            this.GetComponent<Rigidbody>().isKinematic = false;
+            this.transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isJumping == false)
+            {
+                moveSpeed += moveSpeed;
+            }
+
+        }
+
+        if (Input.GetKey(KeyCode.E) && isSliding == false)
+        {
+            this.GetComponent<Rigidbody>().isKinematic = false;
+            this.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isJumping == false)
+            {
+                moveSpeed += moveSpeed;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             this.GetComponent<Rigidbody>().isKinematic = false; 
             if(isJumping == false)
@@ -76,9 +97,12 @@ public class TheifCharacterController : MonoBehaviour {
         {
             print("Stopping");
             //this.GetComponent<BoxCollider>().material = null;
-            isSliding = false; 
-            this.GetComponent<Rigidbody>().isKinematic = true;
-            this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            if(this.isSliding)
+            {
+                isSliding = false;
+                this.GetComponent<Rigidbody>().isKinematic = true;
+                this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
         }
     }
 }
