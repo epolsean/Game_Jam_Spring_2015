@@ -64,11 +64,11 @@ public class StartScreenMenu : MonoBehaviour
 
     public void GoToLevelSelect()
     {
-        if (Advertisement.isReady()) 
-        {
-            Advertisement.Show(); 
-        } 
-        //Application.LoadLevel("StartScreen");
+        //if (Advertisement.isReady()) 
+        //{
+        //    Advertisement.Show(); 
+        //} 
+        Application.LoadLevel("LevelSelect");
     }
 
     public void GoToCredits()

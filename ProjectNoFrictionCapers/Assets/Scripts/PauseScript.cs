@@ -5,7 +5,6 @@ using System.Collections;
 public class PauseScript : MonoBehaviour
 {
 
-    
 	// Use this for initialization
 	void Start () 
     {
