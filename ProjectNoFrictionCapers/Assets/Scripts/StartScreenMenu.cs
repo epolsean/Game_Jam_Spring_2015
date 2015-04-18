@@ -5,7 +5,7 @@ using System.Collections;
 
 public class StartScreenMenu : MonoBehaviour 
 {
-
+    public Text titletext;
     public GameObject MainMenuPanel;
     public GameObject HowToPlayPanel;
     public GameObject CreditsPanel;
@@ -31,6 +31,7 @@ public class StartScreenMenu : MonoBehaviour
 
     public void GoToHowToPlay()
     {
+        titletext.text = "How to play";
         if (MainMenuPanel != null)
         {
             MainMenuPanel.SetActive(false);
@@ -48,6 +49,7 @@ public class StartScreenMenu : MonoBehaviour
 
     public void GoToMainPanel()
     {
+        titletext.text = "Frictionless Capers";
         if (MainMenuPanel != null)
         {
             MainMenuPanel.SetActive(true);
@@ -73,6 +75,7 @@ public class StartScreenMenu : MonoBehaviour
 
     public void GoToCredits()
     {
+        titletext.text = "credits";
         if (MainMenuPanel != null)
         {
             MainMenuPanel.SetActive(false);
