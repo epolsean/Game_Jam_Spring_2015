@@ -55,6 +55,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
         private void Update()
         {
+            print(Input.acceleration); 
             float angle = 0;
             if (Input.acceleration != Vector3.zero)
             {
