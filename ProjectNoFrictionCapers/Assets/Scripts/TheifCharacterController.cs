@@ -99,6 +99,7 @@ public class TheifCharacterController : MonoBehaviour {
             //this.GetComponent<BoxCollider>().material = null;
             if(this.isSliding)
             {
+                this.transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
                 isSliding = false;
                 this.GetComponent<Rigidbody>().isKinematic = true;
                 this.GetComponent<Rigidbody>().velocity = Vector3.zero;
