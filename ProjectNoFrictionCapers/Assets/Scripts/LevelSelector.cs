@@ -13,12 +13,17 @@ public class LevelSelector : MonoBehaviour
     public Sprite draw1Finish;
     public Sprite draw2Finish;
 
+    public Sprite completed;
+    public Sprite unlocked;
+    public Sprite locked;
+
     // Use this for initialization
     void Start()
     {
         StatTracker.updateStats();
         if (StatTracker.Level1_Complete == 1)
         {
+            level1.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level2_Complete != 1 && UpdateMap)
             {
                 map.GetComponent<Animator>().Play("MapDraw1-2");
@@ -29,10 +34,13 @@ public class LevelSelector : MonoBehaviour
                 map.GetComponent<Animator>().enabled = false;
                 map.GetComponent<Image>().sprite = draw1Finish;
             }
+            level2.GetComponent<Image>().sprite = unlocked;
             level2.GetComponent<Button>().interactable = true;
+            level3.GetComponent<Image>().sprite = locked;
         }
         if (StatTracker.Level2_Complete == 1)
         {
+            level1.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level3_Complete != 1 && UpdateMap)
             {
                 map.GetComponent<Animator>().Play("MapDraw2-3");
@@ -43,7 +51,13 @@ public class LevelSelector : MonoBehaviour
                 map.GetComponent<Animator>().enabled = false;
                 map.GetComponent<Image>().sprite = draw2Finish;
             }
+            level3.GetComponent<Image>().sprite = unlocked;
             level3.GetComponent<Button>().interactable = true;
+        }
+        if (StatTracker.Level3_Complete == 1)
+        {
+            level3.GetComponent<Image>().sprite = completed;
+            map.GetComponent<Image>().sprite = draw2Finish;
         }
 	}
 	
