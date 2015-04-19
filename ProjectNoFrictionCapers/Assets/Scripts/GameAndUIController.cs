@@ -17,6 +17,12 @@ public class GameAndUIController : MonoBehaviour
     public static int RoomNumberCheckpoint;
     bool RoomComplete;
 
+    public GameObject MainPausePanel;
+    public GameObject areYouSure;
+
+    float startTime;
+    bool startedUp;
+
     void Awake()
     {
         timeTaken = 0f;
@@ -37,6 +43,7 @@ public class GameAndUIController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        startTime = Time.time;
         UpdateRoomText();
         RoomNumberCheckpoint = 1;
         RoomComplete = false;
@@ -47,7 +54,25 @@ public class GameAndUIController : MonoBehaviour
     void Update()
     {
         if (!RoomComplete)
+        {
+            if (startTime + .01 < Time.time && startedUp == false)
+            {
+                MainPausePanel.SetActive(false);
+                startedUp = true;
+            }
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                if (MainPausePanel.activeInHierarchy == true)
+                {
+                    UnPause();
+                }
+                else
+                {
+                    Pause();
+                }
+            }
             timeTaken += Time.deltaTime;
+        }
         if (Input.GetKey(KeyCode.L) && !RoomComplete)
         {
             RoomComplete = true;
@@ -189,13 +214,28 @@ public class GameAndUIController : MonoBehaviour
         }
     }
 
+    public void AreYouSure()
+    {
+        areYouSure.SetActive(true);
+    }
+
+    public void GoToLevelSelect()
+    {
+        Time.timeScale = 1;
+        Application.LoadLevel("LevelSelect");
+    }
+
     public void UnPause()
     {
-
+        MainPausePanel.SetActive(false);
+        areYouSure.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void Pause()
     {
-
+        MainPausePanel.SetActive(true);
+        areYouSure.SetActive(false);
+        Time.timeScale = 0;
     }
 }
