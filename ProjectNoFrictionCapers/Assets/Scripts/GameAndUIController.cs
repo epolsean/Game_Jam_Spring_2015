@@ -205,10 +205,15 @@ public class GameAndUIController : MonoBehaviour
     {
         if (RoomNumberCheckpoint == TotalRooms)
         {
+            if (Application.loadedLevelName == "Level3")
+            {
+                Application.LoadLevel("EndScene");
+            }
             Application.LoadLevel("LevelSelect");
         }
         else
         {
+            HitTrigger = false;
             RoomComplete = false;
             RoomNumberCheckpoint++;
             UpdateRoomText();
