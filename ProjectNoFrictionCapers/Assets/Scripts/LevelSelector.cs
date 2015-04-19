@@ -20,6 +20,11 @@ public class LevelSelector : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        if(GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip != Resources.Load<AudioClip>("Music/MenuMusic"))
+        {
+            GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/MenuMusic");
+            GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
+        }
         StatTracker.updateStats();
         if (StatTracker.Level1_Complete == 1)
         {
@@ -69,6 +74,8 @@ public class LevelSelector : MonoBehaviour
 
     public void Level1()
     {
+        GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level1Music");
+        GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
         GameAndUIController.TotalRooms = 1;
         LoadingScreen.levelToLoad = "Level1";
         Application.LoadLevel("LoadingScreen");
@@ -76,6 +83,8 @@ public class LevelSelector : MonoBehaviour
 
     public void Level2()
     {
+        GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level2Music");
+        GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
         GameAndUIController.TotalRooms = 2;
         LoadingScreen.levelToLoad = "Level2";
         Application.LoadLevel("LoadingScreen");
@@ -83,6 +92,8 @@ public class LevelSelector : MonoBehaviour
 
     public void Level3()
     {
+        GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level3Music");
+        GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
         GameAndUIController.TotalRooms = 3;
         LoadingScreen.levelToLoad = "Level3";
         Application.LoadLevel("LoadingScreen");
