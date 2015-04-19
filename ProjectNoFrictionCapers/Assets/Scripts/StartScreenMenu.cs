@@ -9,6 +9,7 @@ public class StartScreenMenu : MonoBehaviour
     public GameObject MainMenuPanel;
     public GameObject HowToPlayPanel;
     public GameObject CreditsPanel;
+    public GameObject IntroButton;
 
     void Awake() 
     {
@@ -26,6 +27,10 @@ public class StartScreenMenu : MonoBehaviour
 
     void Start()
     {
+        if (PlayerPrefs.HasKey("FirstPlay"))
+        {
+            IntroButton.SetActive(true);
+        }
         GoToMainPanel();
     }
 
@@ -66,11 +71,20 @@ public class StartScreenMenu : MonoBehaviour
 
     public void GoToLevelSelect()
     {
-        //if (Advertisement.isReady()) 
-        //{
-        //    Advertisement.Show(); 
-        //} 
-        Application.LoadLevel("LevelSelect");
+        if (PlayerPrefs.HasKey("FirstPlay"))
+        {
+            Application.LoadLevel("LevelSelect");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("FirstPlay", 1);
+            GoToIntro();
+        }
+    }
+
+    public void GoToIntro()
+    {
+        Application.LoadLevel("Intro");
     }
 
     public void GoToCredits()

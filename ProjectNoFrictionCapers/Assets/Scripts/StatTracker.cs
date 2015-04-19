@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StatTracker : MonoBehaviour {
-
+public class StatTracker : MonoBehaviour 
+{
     public static int TotalCoins = 0;
     public static int Level1_Complete = 0;
     public static int Level2_Complete = 0;
@@ -16,6 +16,7 @@ public class StatTracker : MonoBehaviour {
 
     public void ClearStats()
     {
+        PlayerPrefs.DeleteKey("FirstPlay");
         PlayerPrefs.SetInt("TotalCoins", 0);
         PlayerPrefs.SetInt("Level1_Complete", 0);
         PlayerPrefs.SetInt("Level2_Complete", 0);
