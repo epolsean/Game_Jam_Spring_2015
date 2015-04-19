@@ -5,6 +5,8 @@ public class DoorStatusScript : MonoBehaviour {
 
 	public bool isOpen = false; 
 
+	public bool canTrigger = true; 
+
 	// Use this for initialization
 	void Start () {
 	

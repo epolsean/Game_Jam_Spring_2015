@@ -8,11 +8,14 @@ public class PressurePlateScript : MonoBehaviour {
 	public GameObject DoorsObj; 
 
 	public GameObject Door01; 
-	public GameObject D01_LerpPoint; 
+	public GameObject D01_LerpPoint;
+	public GameObject D01_start; 
 	public GameObject Door02; 
 	public GameObject D02_LerpPoint;
+	public GameObject D02_start; 
 
 	public bool DoorsOpen = false; 
+	public bool isTriggered = false;  
 
 	public float smooth = 3.0F;
 	public bool isLerpin = false;
@@ -29,9 +32,16 @@ public class PressurePlateScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if(isLerpin)
 		{
-			OpenDoors();
+			if(DoorsOpen == false)
+			{
+				OpenDoors();
+			}
+			else{
+				CloseDoors(); 
+			}
 			LerpTimer += Time.deltaTime; 
 			if(LerpTimer >= LerpsUpTime)
 			{
@@ -42,20 +52,44 @@ public class PressurePlateScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-		if (other.tag == "plateTrigger" && DoorsObj.GetComponent<DoorStatusScript>().isOpen == false)
-        {
-            other.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-            other.transform.rotation = this.transform.rotation; 
-            other.GetComponent<Rigidbody>().isKinematic = true;
-            plateObj.transform.position -= new Vector3(0, 0.1f, 0);  
-			isLerpin = true; 
-        }
+		if (DoorsObj.GetComponent<DoorStatusScript>().canTrigger) {
+			if (isTriggered == false)
+			{
+				isTriggered = true; 
+				DoorsOpen = false; 
+				//other.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
+				//other.transform.rotation = this.transform.rotation; 
+				//other.GetComponent<Rigidbody>().isKinematic = true;
+				plateObj.transform.position -= new Vector3(0, 0.1f, 0);  
+				isLerpin = true; 
+			}
+		}
     }
+
+	void OnTriggerExit(Collider other)
+	{
+		if (DoorsObj.GetComponent<DoorStatusScript>().canTrigger) {
+			if (isTriggered) {
+				DoorsOpen = true; 
+				print("Floor: Close Doors"); 
+				isTriggered = false; 
+				plateObj.transform.position += new Vector3(0, 0.1f, 0);  
+				isLerpin = true; 
+			}
+		}
+	}
 
 	public void endLerp()
 	{
 		isLerpin = false; 
-		DoorsObj.GetComponent<DoorStatusScript> ().isOpen = true; 
+		if (DoorsOpen) {
+			DoorsOpen = false; 
+			DoorsObj.GetComponent<DoorStatusScript>().isOpen = false; 
+		} else {
+			DoorsOpen = true; 
+			DoorsObj.GetComponent<DoorStatusScript>().isOpen = true; 
+		}
+		LerpTimer = 0;  
 	}
 
 	public void OpenDoors()
@@ -64,8 +98,15 @@ public class PressurePlateScript : MonoBehaviour {
 		OpenDoor (Door02, D02_LerpPoint); 
 	}
 
+	public void CloseDoors()
+	{
+		OpenDoor (Door01, D01_start); 
+		OpenDoor (Door02, D02_start); 
+	}
+
 	public void OpenDoor(GameObject Door, GameObject NewTarget)
 	{
 		Door.transform.position = Vector3.Lerp(Door.transform.position, NewTarget.transform.position, smooth*Time.deltaTime);
 	}
+	
 }

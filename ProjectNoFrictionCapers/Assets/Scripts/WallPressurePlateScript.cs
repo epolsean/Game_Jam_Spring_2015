@@ -13,11 +13,12 @@ public class WallPressurePlateScript : MonoBehaviour {
 	public GameObject D02_startPoint; 
 
 	public bool DoorsOpen = false; 
+	public bool isTriggered = false; 
 	
 	public float smooth = 3.0F;
 	public bool isLerpin = false;
 	public float LerpTimer = 0.0f;
-	public float LerpsUpTime = 1.5f; 
+	public float LerpsUpTime = 0.25f; 
 	public float speed = 3.0F;
 	private float startTime;
 	private float journeyLength;
@@ -49,24 +50,28 @@ public class WallPressurePlateScript : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "WallPlateTrigger" && DoorsOpen == false)
+		if (isTriggered == false && DoorsObj.GetComponent<DoorStatusScript>().canTrigger)
 		{
-			other.transform.position = new Vector3(this.transform.position.x, other.transform.position.y, this.transform.position.z);
-			other.transform.rotation = this.transform.rotation; 
-			other.GetComponent<Rigidbody>().isKinematic = true;
+			isTriggered = true;
+			DoorsOpen = false; 
+			//other.transform.position = new Vector3(this.transform.position.x, other.transform.position.y, this.transform.position.z);
+			//other.transform.rotation = this.transform.rotation; 
+			//other.GetComponent<Rigidbody>().isKinematic = true;
 			plateObj.transform.position -= new Vector3(0, 0, -0.1f);  
 			isLerpin = true; 
+			 
 		}
 	}
 
 	void OnTriggerExit(Collider other)
 	{
-		if (other.tag == "WallPlateTrigger") {
-			print ("Close The Doors!"); 
+		if (isTriggered && DoorsObj.GetComponent<DoorStatusScript>().canTrigger) {
+			isTriggered = false;
+			DoorsOpen = true; 
+			print ("Wall: Close The Doors!"); 
 			other.GetComponent<Rigidbody>().isKinematic = false; 
 			plateObj.transform.position += new Vector3(0,0,-0.1f);
-			isLerpin = true;
-
+			isLerpin = true; 
 		}
 	}
 	
