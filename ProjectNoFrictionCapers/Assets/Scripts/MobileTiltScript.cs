@@ -12,43 +12,43 @@ public class MobileTiltScript : MonoBehaviour
     
     // Use this for initialization
 	void Start () {
-		ChildGroup.transform.Rotate(new Vector3(0,1,0), 90); 
+		//ChildGroup.transform.Rotate(new Vector3(0,1,0), 90); 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey(KeyCode.W))
 		{
-			if (transform.rotation.z > -0.083333333333333f && transform.rotation.x > -0.083333333333333f && transform.rotation.x < 0.083333333333333f)
+			if (transform.rotation.z < 0.1f)
 			{
-				transform.Rotate(0, 0, -0.2f);
+				transform.Rotate(0, 0, 0.2f);
 			}
 		}
 		if (Input.GetKey(KeyCode.A))
 		{
-			if (transform.rotation.x > -0.083333333333333f && transform.rotation.z > -0.083333333333333f && transform.rotation.z < 0.083333333333333f)
+			if (transform.rotation.x > -0.1f)
 			{
 				transform.Rotate(-0.2f, 0, 0);
 			}
 		}
 		if (Input.GetKey(KeyCode.S))
 		{
-			if (transform.rotation.z < 0.083333333333333f && transform.rotation.x > -0.083333333333333f && transform.rotation.x < 0.083333333333333f)
+			if (transform.rotation.z > -0.1f)
 			{
-				transform.Rotate(0, 0, 0.2f);
+				transform.Rotate(0, 0, -0.2f);
 			}
 		}
 		if (Input.GetKey(KeyCode.D))
 		{
-			if (transform.rotation.x < 0.083333333333333f && transform.rotation.z > -0.083333333333333f && transform.rotation.z < 0.083333333333333f)
+			if (transform.rotation.x < 0.1f)
 			{
 				transform.Rotate(0.2f, 0, 0);
 			}
 		}
 		//transform.rotation = new Quaternion(transform.rotation.x, .7071067985f, transform.rotation.z, transform.rotation.w);
-        
-
-		transform.rotation = new Quaternion(Input.acceleration.y, Q_y, -Input.acceleration.x, turnBuffer);
+		
+		
+		transform.rotation = new Quaternion(Input.acceleration.x, 0, Input.acceleration.y, turnBuffer);
         print(Input.acceleration); 
 
         /*if(Input.acceleration.y  > 0)
