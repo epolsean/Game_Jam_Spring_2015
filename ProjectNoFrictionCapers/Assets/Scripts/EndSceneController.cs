@@ -11,6 +11,11 @@ public class EndSceneController : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
+        if (GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip != Resources.Load<AudioClip>("Music/EndMusic"))
+        {
+            GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/EndMusic");
+            GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
+        }
         delay = 6.0f;
 	}
 	
@@ -28,7 +33,10 @@ public class EndSceneController : MonoBehaviour
             if (panel1.GetComponent<CanvasGroup>().alpha < 1)
                 panel2.GetComponent<CanvasGroup>().alpha += Time.deltaTime;
         }
-
-	
 	}
+
+    public void GoToMainMenu()
+    {
+        Application.LoadLevel("StartScreen");
+    }
 }
