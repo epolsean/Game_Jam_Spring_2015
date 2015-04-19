@@ -205,7 +205,7 @@ public class GameAndUIController : MonoBehaviour
     {
         if (RoomNumberCheckpoint == TotalRooms)
         {
-            if (Application.loadedLevelName == "Level3")
+            if (Application.loadedLevelName == "Level2")
             {
                 Application.LoadLevel("EndScene");
             }
