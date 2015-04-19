@@ -26,11 +26,12 @@ public class WriteText : MonoBehaviour
         ConversationDone = false;
         whoseTalking = 1;
         InstructionText = GetComponent<Text>();
+        InstructionText.fontSize = Screen.width / 60;
         characters = Instructions.ToCharArray();
         InstructionText.text = "";
         counter = 0;
-        delay = 0.1f;
-        TempDelay = 0.1f;
+        delay = 0.07f;
+        TempDelay = 0.07f;
         switchText = true;
         done = false;
 	}
@@ -65,7 +66,8 @@ public class WriteText : MonoBehaviour
                             {
                                 whoseTalking = 1;
                             }
-                            delay = 0.1f;
+                            InstructionText.text += "\r\n\n\n\n";
+                            delay = TempDelay;
                             switchText = true;
                             done = false;
                             counter++;
@@ -99,7 +101,7 @@ public class WriteText : MonoBehaviour
             {
                 transform.root.GetComponent<CanvasGroup>().alpha -= Time.deltaTime * 0.05f;
             }
-            if(transform.root.GetComponent<CanvasGroup>().alpha <= 0.25f)
+            if(transform.root.GetComponent<CanvasGroup>().alpha <= 0.2f)
             {
                 Application.LoadLevel("LevelSelect");
             }
@@ -115,7 +117,7 @@ public class WriteText : MonoBehaviour
         {
             if (characters[i].Equals('$'))
             {
-                
+                InstructionText.text += "\r\n\n\n\n";
             }
             else if (characters[i].Equals('@'))
             {
