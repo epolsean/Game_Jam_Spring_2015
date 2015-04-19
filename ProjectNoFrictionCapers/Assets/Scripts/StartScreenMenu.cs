@@ -27,6 +27,11 @@ public class StartScreenMenu : MonoBehaviour
 
     void Start()
     {
+        if(GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip != Resources.Load<AudioClip>("Music/MenuMusic"))
+        {
+            GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/MenuMusic");
+            GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
+        }
         if (PlayerPrefs.HasKey("FirstPlay"))
         {
             IntroButton.SetActive(true);

@@ -10,7 +10,7 @@ public class MenuParticles : MonoBehaviour
 
     void Start()
     {
-        
+        aSource = GameObject.Find("MenuMusic").GetComponent<AudioSource>();
     }
 
     void Update()
