@@ -30,35 +30,18 @@ public class MenuParticles : MonoBehaviour
         // Change only the particles that are alive
         for (int i = 0; i < numParticlesAlive; i++)
         {
-            if (i < 204)
+            if (i < 310)
             {
-                m_Particles[i].color = new Color(255 * spectrum[Random.Range(100,104)], 0, 0);
-                //m_Particles[i].position = Camera.main.ScreenToWorldPoint(new Vector3(i, i%Screen.height, 51));
+                m_Particles[i].color = new Color(255 * spectrum[i], 0, 0);
+                //m_Particles[i].size = spectrum[i]*400;
             }
-            else if (i < 408)
+            else if (i < 625)
             {
-                m_Particles[i].color = new Color(0, 255 * spectrum[Random.Range(345, 350)], 0);
-                //m_Particles[i].position = Camera.main.ScreenToWorldPoint(new Vector3(i, i%Screen.height, 51));
-            }
-            else if (i < 612)
-            {
-                m_Particles[i].color = new Color(0, 255 * spectrum[Random.Range(599, 600)], 255 * spectrum[i]);
-                //m_Particles[i].position = Camera.main.ScreenToWorldPoint(new Vector3(i, i%Screen.height, 51));
-            }
-            else if (i < 816)
-            {
-                m_Particles[i].color = new Color(255 * spectrum[Random.Range(760, 763)], 255 * spectrum[i], 0);
-                //m_Particles[i].position = Camera.main.ScreenToWorldPoint(new Vector3(i, i%Screen.height, 51));
+                m_Particles[i].color = new Color(0, 255 * spectrum[i], 0);
             }
             else
             {
-                m_Particles[i].color = new Color(0, 0, 255 * spectrum[Random.Range(998,1000)]);
-                //m_Particles[i].position = Camera.main.ScreenToWorldPoint(new Vector3(i, i%Screen.height, 51));
-            }
-            if (m_Particles[i].color.r <= 100 && m_Particles[i].color.g <= 100 && m_Particles[i].color.b <= 100)
-            {
-                m_Particles[i].color = new Color(0, 0, 255,spectrum[i]);
-                //m_Particles[i].position = Camera.main.ScreenToWorldPoint(new Vector3(i, i%Screen.height, 51));
+                m_Particles[i].color = new Color(0, 0, 255 * spectrum[i]);
             }
         }
 
