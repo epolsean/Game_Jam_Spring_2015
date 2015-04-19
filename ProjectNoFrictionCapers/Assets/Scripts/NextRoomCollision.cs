@@ -10,4 +10,12 @@ public class NextRoomCollision : MonoBehaviour {
             GameAndUIController.HitTrigger = true;
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "ThiefDude")
+        {
+            GameAndUIController.HitTrigger = true;
+        }
+    }
 }
