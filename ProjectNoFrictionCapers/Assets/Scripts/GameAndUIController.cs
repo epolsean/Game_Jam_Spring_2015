@@ -58,19 +58,43 @@ public class GameAndUIController : MonoBehaviour
                     case "Level1":
                         {
                             WhatRoomAndLevel.text = "Level 1 Completed";
-                            PlayerPrefs.SetInt("Level1_Complete", 1);
+                            if (StatTracker.Level1_Complete == 1)
+                            {
+                                LevelSelector.UpdateMap = false;
+                            }
+                            else
+                            {
+                                LevelSelector.UpdateMap = true;
+                                PlayerPrefs.SetInt("Level1_Complete", 1);
+                            }
                             break;
                         }
                     case "Level2":
                         {
                             WhatRoomAndLevel.text = "Level 2 Completed";
-                            PlayerPrefs.SetInt("Level2_Complete", 1);
+                            if (StatTracker.Level2_Complete == 1)
+                            {
+                                LevelSelector.UpdateMap = false;
+                            }
+                            else
+                            {
+                                LevelSelector.UpdateMap = true;
+                                PlayerPrefs.SetInt("Level2_Complete", 1);
+                            }
                             break;
                         }
                     case "Level3":
                         {
                             WhatRoomAndLevel.text = "Level 3 Completed";
-                            PlayerPrefs.SetInt("Level3_Complete", 1);
+                            if (StatTracker.Level3_Complete == 1)
+                            {
+                                LevelSelector.UpdateMap = false;
+                            }
+                            else
+                            {
+                                LevelSelector.UpdateMap = true;
+                                PlayerPrefs.SetInt("Level3_Complete", 1);
+                            }
                             break;
                         }
                 }
@@ -151,7 +175,6 @@ public class GameAndUIController : MonoBehaviour
     {
         if (RoomNumberCheckpoint == TotalRooms)
         {
-            LevelSelector.UpdateMap = true;
             Application.LoadLevel("LevelSelect");
         }
         else
