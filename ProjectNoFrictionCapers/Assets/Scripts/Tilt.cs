@@ -10,21 +10,34 @@ public class Tilt : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.W) && transform.rotation.z > -0.083333333333333f)
+        if (Input.GetKey(KeyCode.W))
         {
-            transform.Rotate(0, 0, -0.2f);
+            if (transform.rotation.z > -0.083333333333333f && transform.rotation.x > -0.083333333333333f && transform.rotation.x < 0.083333333333333f)
+            {
+                transform.Rotate(0, 0, -0.2f);
+            }
         }
-        if (Input.GetKey(KeyCode.A) && transform.rotation.x > -0.083333333333333f)
+        if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(-0.2f, 0, 0);
+            if (transform.rotation.x > -0.083333333333333f && transform.rotation.z > -0.083333333333333f && transform.rotation.z < 0.083333333333333f)
+            {
+                transform.Rotate(-0.2f, 0, 0);
+            }
         }
-        if (Input.GetKey(KeyCode.S) && transform.rotation.z < 0.083333333333333f)
+        if (Input.GetKey(KeyCode.S))
         {
-            transform.Rotate(0, 0, 0.2f);
+            if (transform.rotation.z < 0.083333333333333f && transform.rotation.x > -0.083333333333333f && transform.rotation.x < 0.083333333333333f)
+            {
+                transform.Rotate(0, 0, 0.2f);
+            }
         }
-        if (Input.GetKey(KeyCode.D) && transform.rotation.x < 0.083333333333333f)
+        if (Input.GetKey(KeyCode.D))
         {
-            transform.Rotate(0.2f, 0, 0);
+            if (transform.rotation.x < 0.083333333333333f && transform.rotation.z > -0.083333333333333f && transform.rotation.z < 0.083333333333333f)
+            {
+                transform.Rotate(0.2f, 0, 0);
+            }
         }
+        transform.rotation = new Quaternion(transform.rotation.x, .7071067985f, transform.rotation.z, transform.rotation.w);
 	}
 }
