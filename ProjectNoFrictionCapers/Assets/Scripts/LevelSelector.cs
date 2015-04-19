@@ -4,11 +4,14 @@ using System.Collections;
 
 public class LevelSelector : MonoBehaviour 
 {
-    public static bool UpdateMap = false;
+    public static bool UpdateMap = true;
     public GameObject map;
     public GameObject level1;
     public GameObject level2;
     public GameObject level3;
+
+    public Sprite draw1Finish;
+    public Sprite draw2Finish;
 
     // Use this for initialization
     void Start()
@@ -18,13 +21,13 @@ public class LevelSelector : MonoBehaviour
         {
             if (StatTracker.Level2_Complete != 1 && UpdateMap)
             {
-                //map.GetComponent<Animator>().Play("MapDraw1-2");
+                map.GetComponent<Animator>().Play("MapDraw1-2");
                 UpdateMap = false;
             }
             else if (StatTracker.Level2_Complete != 1 && !UpdateMap)
             {
-                //map.GetComponent<Animator>().enabled = false;
-                //map.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Map1-2(Finish)");
+                map.GetComponent<Animator>().enabled = false;
+                map.GetComponent<Image>().sprite = draw1Finish;
             }
             level2.GetComponent<Button>().interactable = true;
         }
@@ -32,13 +35,13 @@ public class LevelSelector : MonoBehaviour
         {
             if (StatTracker.Level3_Complete != 1 && UpdateMap)
             {
-                //map.GetComponent<Animator>().Play("MapDraw2-3");
+                map.GetComponent<Animator>().Play("MapDraw2-3");
                 UpdateMap = false;
             }
             else if (StatTracker.Level3_Complete != 1 && !UpdateMap)
             {
-                //map.GetComponent<Animator>().enabled = false;
-                //map.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Map2-3(Finish)");
+                map.GetComponent<Animator>().enabled = false;
+                map.GetComponent<Image>().sprite = draw2Finish;
             }
             level3.GetComponent<Button>().interactable = true;
         }
@@ -52,17 +55,20 @@ public class LevelSelector : MonoBehaviour
 
     public void Level1()
     {
-        Application.LoadLevel("Level1");
+        LoadingScreen.levelToLoad = "Level1";
+        Application.LoadLevel("LoadingScreen");
     }
 
     public void Level2()
     {
-        Application.LoadLevel("Level2");
+        LoadingScreen.levelToLoad = "Level2";
+        Application.LoadLevel("LoadingScreen");
     }
 
     public void Level3()
     {
-        Application.LoadLevel("Level3");
+        LoadingScreen.levelToLoad = "Level3";
+        Application.LoadLevel("LoadingScreen");
     }
 
     public void BackToMainMenu()
