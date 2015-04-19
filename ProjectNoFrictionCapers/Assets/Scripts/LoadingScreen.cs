@@ -8,6 +8,8 @@ public class LoadingScreen : MonoBehaviour
     public static string levelToLoad;
     public GameObject loadingText;
     public GameObject spinWheel;
+    public GameObject spinWheel2;
+    public GameObject spinWheel3;
 
     float loadTime = 5.0f;
     bool switchText = true;
@@ -25,6 +27,8 @@ public class LoadingScreen : MonoBehaviour
     void Update()
     {
         spinWheel.transform.Rotate(0, 0, 1);
+        spinWheel2.transform.Rotate(0, 0, -0.75f);
+        spinWheel3.transform.Rotate(0, 0, 1.1f);
         if (delay <= 0)
         {
             delay = 0.5f;

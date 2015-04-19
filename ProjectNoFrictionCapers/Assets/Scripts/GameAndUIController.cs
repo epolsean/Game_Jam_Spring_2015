@@ -23,8 +23,11 @@ public class GameAndUIController : MonoBehaviour
     float startTime;
     bool startedUp;
 
+    public static bool HitTrigger = false;
+
     void Awake()
     {
+        HitTrigger = false;
         timeTaken = 0f;
         RoomNumberCheckpoint = 1;
         RoomComplete = false;
@@ -43,6 +46,7 @@ public class GameAndUIController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        HitTrigger = false;
         startTime = Time.time;
         UpdateRoomText();
         RoomNumberCheckpoint = 1;
@@ -73,8 +77,9 @@ public class GameAndUIController : MonoBehaviour
             }
             timeTaken += Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.L) && !RoomComplete)
+        if (HitTrigger && !RoomComplete)
         {
+            HitTrigger = false;
             RoomComplete = true;
             if (RoomNumberCheckpoint == TotalRooms)
             {
