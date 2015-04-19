@@ -5,10 +5,14 @@ public class PressurePlateScript : MonoBehaviour {
 
     public GameObject plateObj;
 
+	public GameObject DoorsObj; 
+
 	public GameObject Door01; 
 	public GameObject D01_LerpPoint; 
 	public GameObject Door02; 
 	public GameObject D02_LerpPoint;
+
+	public bool DoorsOpen = false; 
 
 	public float smooth = 3.0F;
 	public bool isLerpin = false;
@@ -38,7 +42,7 @@ public class PressurePlateScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "plateTrigger")
+		if (other.tag == "plateTrigger" && DoorsObj.GetComponent<DoorStatusScript>().isOpen == false)
         {
             other.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
             other.transform.rotation = this.transform.rotation; 
@@ -51,6 +55,7 @@ public class PressurePlateScript : MonoBehaviour {
 	public void endLerp()
 	{
 		isLerpin = false; 
+		DoorsObj.GetComponent<DoorStatusScript> ().isOpen = true; 
 	}
 
 	public void OpenDoors()

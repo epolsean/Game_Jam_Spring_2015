@@ -4,7 +4,7 @@ using System.Collections;
 public class WallPressurePlateScript : MonoBehaviour {
 
 	public GameObject plateObj;
-	
+	public GameObject DoorsObj; 
 	public GameObject Door01; 
 	public GameObject D01_LerpPoint; 
 	public GameObject D01_startPoint; 
@@ -49,11 +49,11 @@ public class WallPressurePlateScript : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "plateTrigger")
+		if (other.tag == "WallPlateTrigger" && DoorsOpen == false)
 		{
 			other.transform.position = new Vector3(this.transform.position.x, other.transform.position.y, this.transform.position.z);
 			other.transform.rotation = this.transform.rotation; 
-			//other.GetComponent<Rigidbody>().isKinematic = true;
+			other.GetComponent<Rigidbody>().isKinematic = true;
 			plateObj.transform.position -= new Vector3(0, 0, -0.1f);  
 			isLerpin = true; 
 		}
@@ -61,7 +61,7 @@ public class WallPressurePlateScript : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		if (other.tag == "plateTrigger") {
+		if (other.tag == "WallPlateTrigger") {
 			print ("Close The Doors!"); 
 			other.GetComponent<Rigidbody>().isKinematic = false; 
 			plateObj.transform.position += new Vector3(0,0,-0.1f);
@@ -75,6 +75,7 @@ public class WallPressurePlateScript : MonoBehaviour {
 		isLerpin = false; 
 		if (DoorsOpen) {
 			DoorsOpen = false; 
+			DoorsObj.GetComponent<DoorStatusScript>().isOpen = false; 
 		} else {
 			DoorsOpen = true; 
 		}

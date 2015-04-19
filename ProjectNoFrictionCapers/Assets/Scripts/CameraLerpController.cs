@@ -7,6 +7,8 @@ public class CameraLerpController : MonoBehaviour {
 	public GameObject CamLerp01; 
 	public GameObject CamLerp02; 
 
+	public GameObject WallPressurePlate;
+
 	public float smooth = 3.0F;
 	public bool isLerpin = false;
 	public float LerpTimer = 0.0f;
@@ -37,6 +39,8 @@ public class CameraLerpController : MonoBehaviour {
 		if (other.tag == "ThiefDude") {
   
 			isLerpin = true;
+			WallPressurePlate.GetComponent<WallPressurePlateScript>().DoorsOpen = true; //make sure doors are open before you can close them
+			WallPressurePlate.GetComponent<WallPressurePlateScript>().isLerpin = true; //trigger doors to close
 		}
 	}
 
