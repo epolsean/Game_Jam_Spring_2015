@@ -6,9 +6,10 @@ public class RandomGenerateScript : MonoBehaviour {
     public GameObject[] spawn;
     public GameObject parent;
     public int Spawns;
+    public int columns;
 
-    GameObject[][] slots = new GameObject[10][];
-    int[][] slotsTaken = new int[10][];
+    GameObject[][] slots;
+    int[][] slotsTaken;
     public GameObject[] slot0;
     public GameObject[] slot1;
     public GameObject[] slot2;
@@ -19,9 +20,21 @@ public class RandomGenerateScript : MonoBehaviour {
     public GameObject[] slot7;
     public GameObject[] slot8;
     public GameObject[] slot9;
+    public GameObject[] slot10;
+    public GameObject[] slot11;
+    public GameObject[] slot12;
+    public GameObject[] slot13;
+    public GameObject[] slot14;
+    public GameObject[] slot15;
+    public GameObject[] slot16;
+    public GameObject[] slot17;
+    public GameObject[] slot18;
+    public GameObject[] slot19;
 
 	// Use this for initialization
 	void Start () {
+        slots = new GameObject[columns][];
+        slotsTaken = new int[columns][];
         slots[0] = slot0;
         slots[1] = slot1;
         slots[2] = slot2;
@@ -32,16 +45,16 @@ public class RandomGenerateScript : MonoBehaviour {
         slots[7] = slot7;
         slots[8] = slot8;
         slots[9] = slot9;
-        slotsTaken[0] = new int[10];
-        slotsTaken[1] = new int[10];
-        slotsTaken[2] = new int[10];
-        slotsTaken[3] = new int[10];
-        slotsTaken[4] = new int[10];
-        slotsTaken[5] = new int[10];
-        slotsTaken[6] = new int[10];
-        slotsTaken[7] = new int[10];
-        slotsTaken[8] = new int[10];
-        slotsTaken[9] = new int[10];
+        slotsTaken[0] = new int[slot0.Length];
+        slotsTaken[1] = new int[slot0.Length];
+        slotsTaken[2] = new int[slot0.Length];
+        slotsTaken[3] = new int[slot0.Length];
+        slotsTaken[4] = new int[slot0.Length];
+        slotsTaken[5] = new int[slot0.Length];
+        slotsTaken[6] = new int[slot0.Length];
+        slotsTaken[7] = new int[slot0.Length];
+        slotsTaken[8] = new int[slot0.Length];
+        slotsTaken[9] = new int[slot0.Length];
 
         int rand1 = Random.Range(5,40);
         Spawns = rand1;

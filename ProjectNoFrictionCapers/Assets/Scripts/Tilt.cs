@@ -12,32 +12,32 @@ public class Tilt : MonoBehaviour {
 	void Update () {
         if (Input.GetKey(KeyCode.W))
         {
-            if (transform.rotation.z > -0.1f)
-            {
-                transform.Rotate(0, 0, -0.2f);
-            }
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            if (transform.rotation.x < 0.1f)
-            {
-                transform.Rotate(0.2f, 0, 0);
-            }
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
             if (transform.rotation.z < 0.1f)
             {
                 transform.Rotate(0, 0, 0.2f);
             }
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.A))
         {
             if (transform.rotation.x > -0.1f)
             {
                 transform.Rotate(-0.2f, 0, 0);
             }
         }
-        transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (transform.rotation.z > -0.1f)
+            {
+                transform.Rotate(0, 0, -0.2f);
+            }
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            if (transform.rotation.x < 0.1f)
+            {
+                transform.Rotate(0.2f, 0, 0);
+            }
+        }
+        //transform.rotation = new Quaternion(transform.rotation.x, 0, transform.rotation.z, transform.rotation.w);
 	}
 }
