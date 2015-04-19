@@ -7,6 +7,7 @@ public class RandomGenerateScript : MonoBehaviour {
     public GameObject parent;
     public int Spawns;
     public int columns;
+    public int rows;
 
     GameObject[][] slots;
     int[][] slotsTaken;
@@ -59,18 +60,18 @@ public class RandomGenerateScript : MonoBehaviour {
         int rand1 = Random.Range(5,Spawns);
         for (int i = 0; i < rand1; i++)
         {
-            int rand2 = Random.Range(0, 9);
-            int rand3 = Random.Range(0, 9);
-            for (int j = 0; j < 10; j++)
+            int rand2 = Random.Range(0, columns-1);
+            int rand3 = Random.Range(0, rows-1);
+            for (int j = 0; j < columns; j++)
             {
-                for (int k = 0; k < 10; k++)
+                for (int k = 0; k < rows; k++)
                 {
                     if (j == rand2 && k == rand3)
                     {
-                        /*if (Physics.OverlapSphere(slots[j][k].transform.position, 1.8f).Length > 2)
+                        if (Physics.OverlapSphere(slots[j][k].transform.position, 1.8f).Length > 10)
                         {
                             slotsTaken[j][k] = 1;
-                        }*/
+                        }
                         if (slotsTaken[j][k] != 1)
                         {
                             int rand4 = Random.Range(0, spawn.Length);
