@@ -4,7 +4,7 @@ using System.Collections;
 
 public class LevelSelector : MonoBehaviour 
 {
-    public static bool UpdateMap = true;
+    public static bool UpdateMap = false;
     public GameObject map;
     public GameObject level1;
     public GameObject level2;
@@ -69,18 +69,21 @@ public class LevelSelector : MonoBehaviour
 
     public void Level1()
     {
+        GameAndUIController.TotalRooms = 1;
         LoadingScreen.levelToLoad = "Level1";
         Application.LoadLevel("LoadingScreen");
     }
 
     public void Level2()
     {
+        GameAndUIController.TotalRooms = 2;
         LoadingScreen.levelToLoad = "Level2";
         Application.LoadLevel("LoadingScreen");
     }
 
     public void Level3()
     {
+        GameAndUIController.TotalRooms = 3;
         LoadingScreen.levelToLoad = "Level3";
         Application.LoadLevel("LoadingScreen");
     }
