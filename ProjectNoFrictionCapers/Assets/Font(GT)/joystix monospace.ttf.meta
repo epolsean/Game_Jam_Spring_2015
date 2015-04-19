@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 3456043af474907489de547203128d6c
-timeCreated: 1429395271
+guid: 7ab97f57f99f0c340b843b5dacb24f0d
+timeCreated: 1429428717
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 2
@@ -10,7 +10,8 @@ TrueTypeFontImporter:
   characterPadding: 0
   includeFontData: 1
   use2xBehaviour: 0
-  fontNames: []
+  fontNames:
+  - Good Times
   customCharacters: 
   fontRenderingMode: 0
   userData: 
