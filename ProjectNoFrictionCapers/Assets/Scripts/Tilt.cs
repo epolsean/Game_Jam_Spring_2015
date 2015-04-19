@@ -10,28 +10,28 @@ public class Tilt : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             if (transform.rotation.z < 0.1f)
             {
                 transform.Rotate(0, 0, 0.2f);
             }
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             if (transform.rotation.x > -0.1f)
             {
                 transform.Rotate(-0.2f, 0, 0);
             }
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             if (transform.rotation.z > -0.1f)
             {
                 transform.Rotate(0, 0, -0.2f);
             }
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             if (transform.rotation.x < 0.1f)
             {
