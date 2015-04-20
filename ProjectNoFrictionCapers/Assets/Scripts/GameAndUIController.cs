@@ -149,7 +149,14 @@ public class GameAndUIController : MonoBehaviour
 
             timeTakenText.text = "Time Taken : " + string.Format("{0:00}:{1:00}", (int)(timeTaken / 60), (int)(timeTaken % 60));
             levelComplete.SetActive(true);
-            Invoke("StartAd", 3.0f);
+            if (Advertisement.isSupported)
+            {
+                Invoke("StartAd", 2.0f);
+            }
+            else
+            {
+                AdFinished();
+            }
         }
     }
 
@@ -187,6 +194,10 @@ public class GameAndUIController : MonoBehaviour
                     AdFinished();
                 }
             });
+        }
+        else
+        {
+            AdFinished();
         }
     }
 
