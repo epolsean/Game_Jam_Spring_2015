@@ -31,16 +31,16 @@ public class GameAndUIController : MonoBehaviour
         timeTaken = 0f;
         RoomNumberCheckpoint = 1;
         RoomComplete = false;
-        if (Advertisement.isSupported)
-        {
-            Debug.Log("platform supported for ads");
-            Advertisement.allowPrecache = true;
-            Advertisement.Initialize("32757", false);
-        }
-        else
-        {
-            Debug.Log("Platform not supported");
-        }
+        //if (Advertisement.isSupported)
+        //{
+        //    Debug.Log("platform supported for ads");
+        //    Advertisement.allowPrecache = true;
+        //    Advertisement.Initialize("32757", false);
+        //}
+        //else
+        //{
+        //    Debug.Log("Platform not supported");
+        //}
     }
 
     // Use this for initialization
@@ -147,7 +147,7 @@ public class GameAndUIController : MonoBehaviour
                 }
             }
 
-            timeTakenText.text = "Time Taken : " + string.Format("{0:00}:{1:00}", (int)(timeTaken / 60), (int)(timeTaken % 60));
+            timeTakenText.text = "Time Taken : " + string.Format("{0:00}:{1:00}", (int)(timeTaken / 60) + " m ", (int)(timeTaken % 60)+" s ");
             levelComplete.SetActive(true);
             if (Advertisement.isSupported)
             {
@@ -184,21 +184,18 @@ public class GameAndUIController : MonoBehaviour
 
     void StartAd()
     {
-        if (Advertisement.isReady())
+        while (!Advertisement.isReady())
         {
-            Advertisement.Show(null, new ShowOptions
+            Debug.Log("ad not ready");
+        }
+        Advertisement.Show(null, new ShowOptions
+        {
+            pause = true,
+            resultCallback = result =>
             {
-                pause = true,
-                resultCallback = result =>
-                {
-                    AdFinished();
-                }
-            });
-        }
-        else
-        {
-            AdFinished();
-        }
+                AdFinished();
+            }
+        });
     }
 
     void AdFinished()
@@ -218,9 +215,14 @@ public class GameAndUIController : MonoBehaviour
         {
             if (Application.loadedLevelName == "Level2")
             {
-                Application.LoadLevel("EndScene");
+                LoadingScreen.levelToLoad = "EndScene";
+                Application.LoadLevel("LoadingScreen");
             }
-            Application.LoadLevel("LevelSelect");
+            else
+            {
+                LoadingScreen.levelToLoad = "LevelSelect";
+                Application.LoadLevel("LoadingScreen");
+            }
         }
         else
         {
