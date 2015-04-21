@@ -26,7 +26,7 @@ public class WriteText : MonoBehaviour
         ConversationDone = false;
         whoseTalking = 1;
         InstructionText = GetComponent<Text>();
-        InstructionText.fontSize = Screen.width / 60;
+        InstructionText.fontSize = Screen.width / 65;
         characters = Instructions.ToCharArray();
         InstructionText.text = "";
         counter = 0;
