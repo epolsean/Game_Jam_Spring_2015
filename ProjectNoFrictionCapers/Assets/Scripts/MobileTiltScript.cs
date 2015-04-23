@@ -24,32 +24,34 @@ public class MobileTiltScript : MonoBehaviour
 				transform.Rotate(0, 0, 0.2f);
 			}
 		}
-		if (Input.GetKey(KeyCode.A))
+		else if (Input.GetKey(KeyCode.A))
 		{
 			if (transform.rotation.x > -0.1f)
 			{
 				transform.Rotate(-0.2f, 0, 0);
 			}
 		}
-		if (Input.GetKey(KeyCode.S))
+		else if (Input.GetKey(KeyCode.S))
 		{
 			if (transform.rotation.z > -0.1f)
 			{
 				transform.Rotate(0, 0, -0.2f);
 			}
 		}
-		if (Input.GetKey(KeyCode.D))
-		{
-			if (transform.rotation.x < 0.1f)
-			{
-				transform.Rotate(0.2f, 0, 0);
+		else if (Input.GetKey (KeyCode.D)) {
+			if (transform.rotation.x < 0.1f) {
+				transform.Rotate (0.2f, 0, 0);
 			}
 		}
 		//transform.rotation = new Quaternion(transform.rotation.x, .7071067985f, transform.rotation.z, transform.rotation.w);
+		else /*if(Input.acceleration != null Application.platform == RuntimePlatform.Android)*/
+		{
+			transform.rotation = new Quaternion(Input.acceleration.x, 0, Input.acceleration.y, turnBuffer);
+			print(transform.rotation); 
+			print(Input.acceleration); 
+		}
 		
-		
-		transform.rotation = new Quaternion(Input.acceleration.x, 0, Input.acceleration.y, turnBuffer);
-        print(Input.acceleration); 
+
 
         /*if(Input.acceleration.y  > 0)
         {
