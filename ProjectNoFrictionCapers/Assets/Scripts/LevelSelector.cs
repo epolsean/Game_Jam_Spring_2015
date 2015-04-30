@@ -41,11 +41,10 @@ public class LevelSelector : MonoBehaviour
             }
             level2.GetComponent<Image>().sprite = unlocked;
             level2.GetComponent<Button>().interactable = true;
-            level3.GetComponent<Image>().sprite = locked;
         }
         if (StatTracker.Level2_Complete == 1)
         {
-            level1.GetComponent<Image>().sprite = completed;
+            level2.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level3_Complete != 1 && UpdateMap)
             {
                 map.GetComponent<Animator>().Play("MapDraw2-3");
@@ -56,8 +55,8 @@ public class LevelSelector : MonoBehaviour
                 map.GetComponent<Animator>().enabled = false;
                 map.GetComponent<Image>().sprite = draw2Finish;
             }
-            level3.GetComponent<Image>().sprite = unlocked;
-            level3.GetComponent<Button>().interactable = true;
+            //level3.GetComponent<Image>().sprite = unlocked;
+            //level3.GetComponent<Button>().interactable = true;
         }
         if (StatTracker.Level3_Complete == 1)
         {

@@ -47,8 +47,8 @@ public class MobileTiltScript : MonoBehaviour
 		else /*if(Input.acceleration != null Application.platform == RuntimePlatform.Android)*/
 		{
 			transform.rotation = new Quaternion(Input.acceleration.x, 0, Input.acceleration.y, turnBuffer);
-			print(transform.rotation); 
-			print(Input.acceleration); 
+			//print(transform.rotation); 
+			//print(Input.acceleration); 
 		}
 		
 

@@ -149,9 +149,9 @@ public class GameAndUIController : MonoBehaviour
 
             timeTakenText.text = "Time Taken : " + string.Format("{0:00}:{1:00}", (int)(timeTaken / 60) + " m ", (int)(timeTaken % 60)+" s ");
             levelComplete.SetActive(true);
-            if (Advertisement.isSupported)
+            if (Advertisement.isSupported && !Application.isEditor)
             {
-                Invoke("StartAd", 2.0f);
+                StartCoroutine(ShowAdWhenReady());
             }
             else
             {
@@ -182,12 +182,11 @@ public class GameAndUIController : MonoBehaviour
         }
     }
 
-    void StartAd()
+    IEnumerator ShowAdWhenReady()
     {
         while (!Advertisement.isReady())
-        {
-            Debug.Log("ad not ready");
-        }
+            yield return null;
+
         Advertisement.Show(null, new ShowOptions
         {
             pause = true,
