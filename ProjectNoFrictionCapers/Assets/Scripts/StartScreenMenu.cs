@@ -13,20 +13,16 @@ public class StartScreenMenu : MonoBehaviour
 
     void Awake() 
     {
-        if (Advertisement.isSupported) 
+        if (Advertisement.isSupported && !Advertisement.isInitialized) 
         {
-            Debug.Log("platform supported for ads");
             Advertisement.allowPrecache = true;
-            Advertisement.Initialize ("32757",false);
-        } 
-        else 
-        {
-            Debug.Log("Platform not supported");
+            Advertisement.Initialize ("32757");
         }
     }
 
     void Start()
     {
+        Screen.sleepTimeout = SleepTimeout.SystemSetting;
         if(GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip != Resources.Load<AudioClip>("Music/MenuMusic"))
         {
             GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/MenuMusic");

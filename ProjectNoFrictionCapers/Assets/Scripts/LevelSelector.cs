@@ -20,6 +20,7 @@ public class LevelSelector : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Screen.sleepTimeout = SleepTimeout.SystemSetting;
         if(GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip != Resources.Load<AudioClip>("Music/MenuMusic"))
         {
             GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/MenuMusic");
