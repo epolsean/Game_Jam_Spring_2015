@@ -101,7 +101,7 @@ public class WriteText : MonoBehaviour
             {
                 transform.root.GetComponent<CanvasGroup>().alpha -= Time.deltaTime * 0.05f;
             }
-            if(transform.root.GetComponent<CanvasGroup>().alpha <= 0.2f)
+            if(transform.root.GetComponent<CanvasGroup>().alpha <= 0.35f)
             {
                 Application.LoadLevel("LevelSelect");
             }

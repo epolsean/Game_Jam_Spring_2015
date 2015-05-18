@@ -55,7 +55,7 @@ public class StartScreenMenu : MonoBehaviour
 
     public void GoToMainPanel()
     {
-        titletext.text = "Frictionless Capers";
+        titletext.text = "Slide Heist";
         if (MainMenuPanel != null)
         {
             MainMenuPanel.SetActive(true);
