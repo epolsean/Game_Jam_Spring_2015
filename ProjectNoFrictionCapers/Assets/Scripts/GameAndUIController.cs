@@ -180,7 +180,6 @@ public class GameAndUIController : MonoBehaviour
 
     IEnumerator ShowAdWhenReady()
     {
-        yield return new WaitForSeconds(5.0f);
         while (!Advertisement.isReady())
             yield return null;
 
