@@ -7,7 +7,7 @@ public class CameraLerpController : MonoBehaviour {
 	public GameObject CamLerp01; 
 	public GameObject CamLerp02; 
 
-	public GameObject WallPressurePlate;
+	public GameObject PressurePlate;
 
 	public GameObject DoorsObj; 
 
@@ -41,8 +41,20 @@ public class CameraLerpController : MonoBehaviour {
 		if (other.tag == "ThiefDude") {
   
 			isLerpin = true;
-			WallPressurePlate.GetComponent<WallPressurePlateScript>().DoorsOpen = true; //make sure doors are open before you can close them
-			WallPressurePlate.GetComponent<WallPressurePlateScript>().isLerpin = true; //trigger doors to close
+            if(PressurePlate.tag == "WallPlate")
+            {
+                PressurePlate.GetComponent<WallPressurePlateScript>().DoorsOpen = true; //make sure doors are open before you can close them
+			    PressurePlate.GetComponent<WallPressurePlateScript>().isLerpin = true; //trigger doors to close
+            }
+            else if (PressurePlate.tag == "FloorPlate")
+            {
+                PressurePlate.GetComponent<PressurePlateScript>().DoorsOpen = true; //make sure doors are open before you can close them
+			    PressurePlate.GetComponent<PressurePlateScript>().isLerpin = true; //trigger doors to close
+            }
+            else
+            {
+                Debug.LogError("Tag of pressure plate not set");
+            }
 			DoorsObj.GetComponent<DoorStatusScript>().canTrigger = false; 
 		}
 	}

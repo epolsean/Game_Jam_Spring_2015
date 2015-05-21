@@ -145,6 +145,7 @@ public class GameAndUIController : MonoBehaviour
 
             timeTakenText.text = "Time Taken  " + string.Format("{0:00}:{1:00}", (int)(timeTaken / 60) + "m", (int)(timeTaken % 60)+"s ");
             levelComplete.SetActive(true);
+            Time.timeScale = 0f;
             if (Advertisement.isSupported)
             {
                 StartCoroutine(ShowAdWhenReady());
@@ -207,6 +208,7 @@ public class GameAndUIController : MonoBehaviour
 
     public void ContinueGame()
     {
+        Time.timeScale = 1f;
         if (RoomNumberCheckpoint == TotalRooms)
         {
             if (Application.loadedLevelName == "Level2")
@@ -226,7 +228,7 @@ public class GameAndUIController : MonoBehaviour
             RoomComplete = false;
             RoomNumberCheckpoint++;
             UpdateRoomText();
-            timeTaken = 0f;
+            //timeTaken = 0f;
             levelComplete.SetActive(false);
             continueGame.SetActive(false);
             retryLevel.SetActive(false);

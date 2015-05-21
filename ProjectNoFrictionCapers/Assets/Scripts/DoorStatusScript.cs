@@ -13,7 +13,23 @@ public class DoorStatusScript : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+    {
+	    if(isOpen)
+        {
+
+            foreach (BoxCollider boxC in GetComponentsInChildren<BoxCollider>())
+            {
+                boxC.enabled = false;
+            }
+        }
+        else
+        {
+
+            foreach (BoxCollider boxC in GetComponentsInChildren<BoxCollider>())
+            {
+                boxC.enabled = true;
+            }
+        }
 	}
 }

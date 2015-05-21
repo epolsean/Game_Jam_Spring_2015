@@ -11,7 +11,7 @@ public class LoadingScreen : MonoBehaviour
     public GameObject spinWheel2;
     public GameObject spinWheel3;
 
-    float loadTime = 3.0f;
+    float loadTime = 2.0f;
     bool switchText = true;
     float delay = 0.5f;
 
@@ -19,7 +19,7 @@ public class LoadingScreen : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        loadTime = 3.0f;
+        loadTime = 2.0f;
         StartCoroutine(DisplayLoadingScreen(levelToLoad));
     }
 
