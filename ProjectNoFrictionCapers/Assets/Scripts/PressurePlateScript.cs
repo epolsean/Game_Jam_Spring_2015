@@ -60,7 +60,7 @@ public class PressurePlateScript : MonoBehaviour {
 				//other.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
 				//other.transform.rotation = this.transform.rotation; 
 				//other.GetComponent<Rigidbody>().isKinematic = true;
-				plateObj.transform.position -= new Vector3(0, 0.1f, 0);  
+                plateObj.transform.position -= 0.1f * plateObj.transform.up;
 				isLerpin = true; 
 			}
 		}
@@ -72,8 +72,8 @@ public class PressurePlateScript : MonoBehaviour {
 			if (isTriggered) {
 				DoorsOpen = true; 
 				print("Floor: Close Doors"); 
-				isTriggered = false; 
-				plateObj.transform.position += new Vector3(0, 0.1f, 0);  
+				isTriggered = false;
+                plateObj.transform.position += 0.1f * plateObj.transform.up;
 				isLerpin = true; 
 			}
 		}

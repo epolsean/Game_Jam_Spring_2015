@@ -123,6 +123,90 @@ public class GameAndUIController : MonoBehaviour
                             }
                             break;
                         }
+                    case "Level4":
+                        {
+                            WhatRoomAndLevel.text = "Level 4 Completed";
+                            if (StatTracker.Level4_Complete == 1)
+                            {
+                                LevelSelector.UpdateMap = false;
+                            }
+                            else
+                            {
+                                LevelSelector.UpdateMap = true;
+                                PlayerPrefs.SetInt("Level4_Complete", 1);
+                            }
+                            break;
+                        }
+                    case "Level5":
+                        {
+                            WhatRoomAndLevel.text = "Level 5 Completed";
+                            if (StatTracker.Level5_Complete == 1)
+                            {
+                                LevelSelector.UpdateMap = false;
+                            }
+                            else
+                            {
+                                LevelSelector.UpdateMap = true;
+                                PlayerPrefs.SetInt("Level5_Complete", 1);
+                            }
+                            break;
+                        }
+                    case "Level6":
+                        {
+                            WhatRoomAndLevel.text = "Level 6 Completed";
+                            if (StatTracker.Level6_Complete == 1)
+                            {
+                                LevelSelector.UpdateMap = false;
+                            }
+                            else
+                            {
+                                LevelSelector.UpdateMap = true;
+                                PlayerPrefs.SetInt("Level6_Complete", 1);
+                            }
+                            break;
+                        }
+                    case "Level7":
+                        {
+                            WhatRoomAndLevel.text = "Level 7 Completed";
+                            if (StatTracker.Level7_Complete == 1)
+                            {
+                                LevelSelector.UpdateMap = false;
+                            }
+                            else
+                            {
+                                LevelSelector.UpdateMap = true;
+                                PlayerPrefs.SetInt("Level7_Complete", 1);
+                            }
+                            break;
+                        }
+                    case "Level8":
+                        {
+                            WhatRoomAndLevel.text = "Level 8 Completed";
+                            if (StatTracker.Level8_Complete == 1)
+                            {
+                                LevelSelector.UpdateMap = false;
+                            }
+                            else
+                            {
+                                LevelSelector.UpdateMap = true;
+                                PlayerPrefs.SetInt("Level8_Complete", 1);
+                            }
+                            break;
+                        }
+                    case "Level9":
+                        {
+                            WhatRoomAndLevel.text = "Level 9 Completed";
+                            if (StatTracker.Level9_Complete == 1)
+                            {
+                                LevelSelector.UpdateMap = false;
+                            }
+                            else
+                            {
+                                LevelSelector.UpdateMap = true;
+                                PlayerPrefs.SetInt("Level9_Complete", 1);
+                            }
+                            break;
+                        }
                 }
                 StatTracker.updateStats();
             }
@@ -130,12 +214,47 @@ public class GameAndUIController : MonoBehaviour
             {
                 switch (Application.loadedLevelName)
                 {
+                    case "Level1":
+                        {
+                            WhatRoomAndLevel.text = "Room " + RoomNumberCheckpoint + " Completed";
+                            break;
+                        }
                     case "Level2":
                         {
                             WhatRoomAndLevel.text = "Room " + RoomNumberCheckpoint + " Completed";
                             break;
                         }
                     case "Level3":
+                        {
+                            WhatRoomAndLevel.text = "Room " + RoomNumberCheckpoint + " Completed";
+                            break;
+                        }
+                    case "Level4":
+                        {
+                            WhatRoomAndLevel.text = "Room " + RoomNumberCheckpoint + " Completed";
+                            break;
+                        }
+                    case "Level5":
+                        {
+                            WhatRoomAndLevel.text = "Room " + RoomNumberCheckpoint + " Completed";
+                            break;
+                        }
+                    case "Level6":
+                        {
+                            WhatRoomAndLevel.text = "Room " + RoomNumberCheckpoint + " Completed";
+                            break;
+                        }
+                    case "Level7":
+                        {
+                            WhatRoomAndLevel.text = "Room " + RoomNumberCheckpoint + " Completed";
+                            break;
+                        }
+                    case "Level8":
+                        {
+                            WhatRoomAndLevel.text = "Room " + RoomNumberCheckpoint + " Completed";
+                            break;
+                        }
+                    case "Level9":
                         {
                             WhatRoomAndLevel.text = "Room " + RoomNumberCheckpoint + " Completed";
                             break;

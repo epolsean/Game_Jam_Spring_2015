@@ -57,7 +57,7 @@ public class WallPressurePlateScript : MonoBehaviour {
 			//other.transform.position = new Vector3(this.transform.position.x, other.transform.position.y, this.transform.position.z);
 			//other.transform.rotation = this.transform.rotation; 
 			//other.GetComponent<Rigidbody>().isKinematic = true;
-			plateObj.transform.position -= new Vector3(0, 0, -0.1f);  
+            plateObj.transform.position -= 0.1f*plateObj.transform.up;
 			isLerpin = true; 
 			 
 		}
@@ -69,8 +69,8 @@ public class WallPressurePlateScript : MonoBehaviour {
 			isTriggered = false;
 			DoorsOpen = true; 
 			print ("Wall: Close The Doors!"); 
-			other.GetComponent<Rigidbody>().isKinematic = false; 
-			plateObj.transform.position += new Vector3(0,0,-0.1f);
+			other.GetComponent<Rigidbody>().isKinematic = false;
+            plateObj.transform.position += 0.1f * plateObj.transform.up;
 			isLerpin = true; 
 		}
 	}
