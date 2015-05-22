@@ -87,11 +87,13 @@ public class GameAndUIController : MonoBehaviour
                             if (StatTracker.Level1_Complete == 1)
                             {
                                 LevelSelector.UpdateMap = false;
+                                LevelSelector.CurrentCity = 1;
                             }
                             else
                             {
                                 LevelSelector.UpdateMap = true;
                                 PlayerPrefs.SetInt("Level1_Complete", 1);
+                                LevelSelector.CurrentCity = 1;
                             }
                             break;
                         }
@@ -101,11 +103,13 @@ public class GameAndUIController : MonoBehaviour
                             if (StatTracker.Level2_Complete == 1)
                             {
                                 LevelSelector.UpdateMap = false;
+                                LevelSelector.CurrentCity = 1;
                             }
                             else
                             {
                                 LevelSelector.UpdateMap = true;
                                 PlayerPrefs.SetInt("Level2_Complete", 1);
+                                LevelSelector.CurrentCity = 1;
                             }
                             break;
                         }
@@ -115,11 +119,13 @@ public class GameAndUIController : MonoBehaviour
                             if (StatTracker.Level3_Complete == 1)
                             {
                                 LevelSelector.UpdateMap = false;
+                                LevelSelector.CurrentCity = 1;
                             }
                             else
                             {
                                 LevelSelector.UpdateMap = true;
                                 PlayerPrefs.SetInt("Level3_Complete", 1);
+                                LevelSelector.CurrentCity = 2;
                             }
                             break;
                         }
@@ -129,11 +135,13 @@ public class GameAndUIController : MonoBehaviour
                             if (StatTracker.Level4_Complete == 1)
                             {
                                 LevelSelector.UpdateMap = false;
+                                LevelSelector.CurrentCity = 2;
                             }
                             else
                             {
                                 LevelSelector.UpdateMap = true;
                                 PlayerPrefs.SetInt("Level4_Complete", 1);
+                                LevelSelector.CurrentCity = 2;
                             }
                             break;
                         }
@@ -143,11 +151,13 @@ public class GameAndUIController : MonoBehaviour
                             if (StatTracker.Level5_Complete == 1)
                             {
                                 LevelSelector.UpdateMap = false;
+                                LevelSelector.CurrentCity = 2;
                             }
                             else
                             {
                                 LevelSelector.UpdateMap = true;
                                 PlayerPrefs.SetInt("Level5_Complete", 1);
+                                LevelSelector.CurrentCity = 2;
                             }
                             break;
                         }
@@ -157,11 +167,13 @@ public class GameAndUIController : MonoBehaviour
                             if (StatTracker.Level6_Complete == 1)
                             {
                                 LevelSelector.UpdateMap = false;
+                                LevelSelector.CurrentCity = 2;
                             }
                             else
                             {
                                 LevelSelector.UpdateMap = true;
                                 PlayerPrefs.SetInt("Level6_Complete", 1);
+                                LevelSelector.CurrentCity = 3;
                             }
                             break;
                         }
@@ -171,11 +183,13 @@ public class GameAndUIController : MonoBehaviour
                             if (StatTracker.Level7_Complete == 1)
                             {
                                 LevelSelector.UpdateMap = false;
+                                LevelSelector.CurrentCity = 3;
                             }
                             else
                             {
                                 LevelSelector.UpdateMap = true;
                                 PlayerPrefs.SetInt("Level7_Complete", 1);
+                                LevelSelector.CurrentCity = 3;
                             }
                             break;
                         }
@@ -185,11 +199,13 @@ public class GameAndUIController : MonoBehaviour
                             if (StatTracker.Level8_Complete == 1)
                             {
                                 LevelSelector.UpdateMap = false;
+                                LevelSelector.CurrentCity = 3;
                             }
                             else
                             {
                                 LevelSelector.UpdateMap = true;
                                 PlayerPrefs.SetInt("Level8_Complete", 1);
+                                LevelSelector.CurrentCity = 3;
                             }
                             break;
                         }
@@ -199,11 +215,13 @@ public class GameAndUIController : MonoBehaviour
                             if (StatTracker.Level9_Complete == 1)
                             {
                                 LevelSelector.UpdateMap = false;
+                                LevelSelector.CurrentCity = 3;
                             }
                             else
                             {
                                 LevelSelector.UpdateMap = true;
                                 PlayerPrefs.SetInt("Level9_Complete", 1);
+                                LevelSelector.CurrentCity = 3;
                             }
                             break;
                         }

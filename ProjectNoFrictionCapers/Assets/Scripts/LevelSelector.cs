@@ -36,17 +36,35 @@ public class LevelSelector : MonoBehaviour
     public Sprite unlocked;
     public Sprite locked;
 
-    public static int CurrentCity = 1;
+    public static int CurrentCity = 3;
 
     // Use this for initialization
     void Start()
     {
-        //UpdateMap = true;
+        UpdateMap = true;
         Screen.sleepTimeout = SleepTimeout.SystemSetting;
         if(GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip != Resources.Load<AudioClip>("Music/MenuMusic"))
         {
             GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/MenuMusic");
             GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
+        }
+        switch (CurrentCity)
+        {
+            case 1:
+                {
+                    GoToCity1();
+                    break;
+                }
+            case 2:
+                {
+                    GoToCity2();
+                    break;
+                }
+            case 3:
+                {
+                    GoToCity3();
+                    break;
+                }
         }
         StatTracker.updateStats();
         if (StatTracker.Level1_Complete == 1)
@@ -90,14 +108,14 @@ public class LevelSelector : MonoBehaviour
             level4.GetComponent<Image>().sprite = unlocked;
             level4.GetComponent<Button>().interactable = true;
             map1.GetComponent<Image>().sprite = draw2Finish;
-            GoToCity2();
+            //GoToCity2();
         }
         if (StatTracker.Level4_Complete == 1)
         {
             level4.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level5_Complete != 1 && UpdateMap)
             {
-                GoToCity2();
+                //GoToCity2();
                 map2.GetComponent<Animator>().Play("MapDraw1-2");
                 UpdateMap = false;
             }
@@ -114,7 +132,7 @@ public class LevelSelector : MonoBehaviour
             level5.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level6_Complete != 1 && UpdateMap)
             {
-                GoToCity2();
+                //GoToCity2();
                 map2.GetComponent<Animator>().Play("MapDraw2-3");
                 UpdateMap = false;
             }
@@ -135,14 +153,14 @@ public class LevelSelector : MonoBehaviour
             level7.GetComponent<Image>().sprite = unlocked;
             level7.GetComponent<Button>().interactable = true;
             map2.GetComponent<Image>().sprite = draw2Finish;
-            GoToCity3();
+            map2.GetComponent<Animator>().enabled = false;
         }
         if (StatTracker.Level7_Complete == 1)
         {
             level7.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level8_Complete != 1 && UpdateMap)
             {
-                GoToCity3();
+                //GoToCity3();
                 map3.GetComponent<Animator>().Play("MapDraw1-2");
                 UpdateMap = false;
             }
@@ -159,7 +177,7 @@ public class LevelSelector : MonoBehaviour
             level8.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level9_Complete != 1 && UpdateMap)
             {
-                GoToCity3();
+                //GoToCity3();
                 map3.GetComponent<Animator>().Play("MapDraw2-3");
                 UpdateMap = false;
             }
@@ -175,7 +193,7 @@ public class LevelSelector : MonoBehaviour
         {
             level9.GetComponent<Image>().sprite = completed;
             map3.GetComponent<Image>().sprite = draw2Finish;
-            GoToCity1();
+            map3.GetComponent<Animator>().enabled = false;
         }
 	}
 	
