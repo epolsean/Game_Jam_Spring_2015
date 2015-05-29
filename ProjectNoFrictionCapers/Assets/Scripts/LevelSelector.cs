@@ -36,12 +36,12 @@ public class LevelSelector : MonoBehaviour
     public Sprite unlocked;
     public Sprite locked;
 
-    public static int CurrentCity = 3;
+    public static int CurrentCity = 1;
 
     // Use this for initialization
     void Start()
     {
-        UpdateMap = true;
+        //UpdateMap = true;
         Screen.sleepTimeout = SleepTimeout.SystemSetting;
         if(GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip != Resources.Load<AudioClip>("Music/MenuMusic"))
         {
@@ -108,6 +108,7 @@ public class LevelSelector : MonoBehaviour
             level4.GetComponent<Image>().sprite = unlocked;
             level4.GetComponent<Button>().interactable = true;
             map1.GetComponent<Image>().sprite = draw2Finish;
+            map1.GetComponent<Animator>().enabled = false;
             //GoToCity2();
         }
         if (StatTracker.Level4_Complete == 1)
@@ -255,7 +256,7 @@ public class LevelSelector : MonoBehaviour
     {
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level2Music");
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
-        GameAndUIController.TotalRooms = 2;
+        GameAndUIController.TotalRooms = 1;
         LoadingScreen.levelToLoad = "Level4";
         Application.LoadLevel("LoadingScreen");
     }
@@ -291,7 +292,7 @@ public class LevelSelector : MonoBehaviour
     {
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level3Music");
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
-        GameAndUIController.TotalRooms = 2;
+        GameAndUIController.TotalRooms = 3;
         LoadingScreen.levelToLoad = "Level8";
         Application.LoadLevel("LoadingScreen");
     }
@@ -300,7 +301,7 @@ public class LevelSelector : MonoBehaviour
     {
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level3Music");
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
-        GameAndUIController.TotalRooms = 2;
+        GameAndUIController.TotalRooms = 3;
         LoadingScreen.levelToLoad = "Level9";
         Application.LoadLevel("LoadingScreen");
     }

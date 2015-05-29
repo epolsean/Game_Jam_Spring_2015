@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-
     Vector3 lastLooking;
     // Use this for initialization
     void Start()

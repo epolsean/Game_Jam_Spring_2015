@@ -5,7 +5,7 @@ public class CubeBlink : MonoBehaviour
 {
     GameObject[] cubes;
     public AudioSource aSource;
-    float timer = 1.0f;
+    //float timer = 1.0f;
     public bool Randomize = false;
 
     void Start()

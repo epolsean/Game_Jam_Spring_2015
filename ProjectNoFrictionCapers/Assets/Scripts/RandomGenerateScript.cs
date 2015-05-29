@@ -5,7 +5,8 @@ public class RandomGenerateScript : MonoBehaviour {
 
     public GameObject[] spawn;
     public GameObject parent;
-    public int Spawns;
+    public int SpawnsMin;
+    public int SpawnsMax;
     public int columns;
     public int rows;
 
@@ -57,7 +58,7 @@ public class RandomGenerateScript : MonoBehaviour {
         if(columns >= 19 && slot18 != null)  {  slots[18] = slot18;   slotsTaken[18] = new int[slot18.Length];  }
         if(columns >= 20 && slot19 != null)  {  slots[19] = slot19;   slotsTaken[19] = new int[slot19.Length];  }
 
-        int rand1 = Random.Range(5,Spawns);
+        int rand1 = Random.Range(SpawnsMin,SpawnsMax);
         for (int i = 0; i < rand1; i++)
         {
             int rand2 = Random.Range(0, columns-1);
@@ -68,7 +69,7 @@ public class RandomGenerateScript : MonoBehaviour {
                 {
                     if (j == rand2 && k == rand3)
                     {
-                        if (Physics.OverlapSphere(slots[j][k].transform.position, 1.8f).Length > 10)
+                        if (Physics.OverlapSphere(slots[j][k].transform.position, 1.4f).Length > 10)
                         {
                             slotsTaken[j][k] = 1;
                         }
@@ -78,7 +79,7 @@ public class RandomGenerateScript : MonoBehaviour {
                             Quaternion randRot = new Quaternion(0, Random.Range(0f, 1f), 0, 1);
                             GameObject newObj = (GameObject)Instantiate(spawn[rand4], slots[j][k].transform.position, randRot);
                             newObj.transform.parent = parent.transform;
-                            newObj.transform.position = new Vector3(newObj.transform.position.x, parent.transform.position.y, newObj.transform.position.z);
+                            newObj.transform.position = new Vector3(newObj.transform.position.x, parent.transform.position.y+0.15f, newObj.transform.position.z);
                             slotsTaken[j][k] = 1;
                         }
                         else

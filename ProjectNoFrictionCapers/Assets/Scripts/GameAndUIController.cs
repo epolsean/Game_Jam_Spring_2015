@@ -24,13 +24,24 @@ public class GameAndUIController : MonoBehaviour
     bool startedUp;
 
     public static bool HitTrigger = false;
+    public static bool hitCop = false;
 
     void Awake()
     {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         HitTrigger = false;
-        timeTaken = 0f;
+        startTime = Time.time;
+        UpdateRoomText();
         RoomNumberCheckpoint = 1;
         RoomComplete = false;
+        if (!hitCop)
+        {
+            timeTaken = 0f;
+        }
+        else
+        {
+            hitCop = false;
+        }
         if (Advertisement.isSupported && !Advertisement.isInitialized)
         {
             Advertisement.allowPrecache = true;
@@ -39,16 +50,23 @@ public class GameAndUIController : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start()
-    {
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        HitTrigger = false;
-        startTime = Time.time;
-        UpdateRoomText();
-        RoomNumberCheckpoint = 1;
-        RoomComplete = false;
-        timeTaken = 0f;
-    }
+    //void Start()
+    //{
+    //    Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    //    HitTrigger = false;
+    //    startTime = Time.time;
+    //    UpdateRoomText();
+    //    RoomNumberCheckpoint = 1;
+    //    RoomComplete = false;
+    //    if (!hitCop)
+    //    {
+    //        timeTaken = 0f;
+    //    }
+    //    else
+    //    {
+    //        hitCop = false;
+    //    }
+    //}
 
     // Update is called once per frame
     void Update()
@@ -300,17 +318,47 @@ public class GameAndUIController : MonoBehaviour
         {
             case "Level1":
                 {
-                    HUDLevelText.text = "Level 1 : Room " + RoomNumberCheckpoint;
+                    HUDLevelText.text = "Level 1 : Room " + 1;
                     break;
                 }
             case "Level2":
                 {
-                    HUDLevelText.text = "Level 2 : Room " + RoomNumberCheckpoint;
+                    HUDLevelText.text = "Level 2 : Room " + 1;
                     break;
                 }
             case "Level3":
                 {
-                    HUDLevelText.text = "Level 3 : Room " + RoomNumberCheckpoint;
+                    HUDLevelText.text = "Level 3 : Room " + 1;
+                    break;
+                }
+            case "Level4":
+                {
+                    HUDLevelText.text = "Level 4 : Room " + 1;
+                    break;
+                }
+            case "Level5":
+                {
+                    HUDLevelText.text = "Level 5 : Room " + RoomNumberCheckpoint;
+                    break;
+                }
+            case "Level6":
+                {
+                    HUDLevelText.text = "Level 6 : Room " + RoomNumberCheckpoint;
+                    break;
+                }
+            case "Level7":
+                {
+                    HUDLevelText.text = "Level 7 : Room " + RoomNumberCheckpoint;
+                    break;
+                }
+            case "Level8":
+                {
+                    HUDLevelText.text = "Level 8 : Room " + RoomNumberCheckpoint;
+                    break;
+                }
+            case "Level9":
+                {
+                    HUDLevelText.text = "Level 9 : Room " + RoomNumberCheckpoint;
                     break;
                 }
         }
@@ -334,6 +382,7 @@ public class GameAndUIController : MonoBehaviour
 
     void AdFinished()
     {
+        Time.timeScale = 1.0f;
         continueGame.SetActive(true);
         retryLevel.SetActive(true);
     }
@@ -348,7 +397,7 @@ public class GameAndUIController : MonoBehaviour
         Time.timeScale = 1f;
         if (RoomNumberCheckpoint == TotalRooms)
         {
-            if (Application.loadedLevelName == "Level2")
+            if (Application.loadedLevelName == "Level9")
             {
                 LoadingScreen.levelToLoad = "EndScene";
                 Application.LoadLevel("LoadingScreen");
