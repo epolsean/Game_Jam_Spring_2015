@@ -142,17 +142,17 @@ public class LevelSelector : MonoBehaviour
                 map2.GetComponent<Animator>().enabled = false;
                 map2.GetComponent<Image>().sprite = draw2Finish;
             }
-            level6.GetComponent<Image>().sprite = unlocked;
-            level6.GetComponent<Button>().interactable = true;
+            //level6.GetComponent<Image>().sprite = unlocked;
+            //level6.GetComponent<Button>().interactable = true;
         }
         if (StatTracker.Level6_Complete == 1)
         {
-            City3Button.GetComponent<Button>().interactable = true;
-            City3Button.GetComponent<Image>().sprite = unlocked;
-            City3Button.GetComponentInChildren<Text>().text = "City 3";
+            //City3Button.GetComponent<Button>().interactable = true;
+            //City3Button.GetComponent<Image>().sprite = unlocked;
+            //City3Button.GetComponentInChildren<Text>().text = "City 3";
             level6.GetComponent<Image>().sprite = completed;
-            level7.GetComponent<Image>().sprite = unlocked;
-            level7.GetComponent<Button>().interactable = true;
+            //level7.GetComponent<Image>().sprite = unlocked;
+            //level7.GetComponent<Button>().interactable = true;
             map2.GetComponent<Image>().sprite = draw2Finish;
             map2.GetComponent<Animator>().enabled = false;
         }

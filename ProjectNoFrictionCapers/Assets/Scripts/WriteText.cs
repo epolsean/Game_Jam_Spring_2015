@@ -5,14 +5,15 @@ using System.Collections;
 public class WriteText : MonoBehaviour 
 {
     public static int whoseTalking = 1;
-    public int WhatNumberTalking;
+    public int WhatNumberTalking = 1;
     public string Instructions;
     char[] characters;
     Text InstructionText;
 
     bool switchText = true;
-    float delay = 0.1f;
-    float TempDelay = 0.1f;
+    float delay;
+    float letterDelay;
+    float switchDelay;
     int counter = 0;
 
     bool done = false;
@@ -30,8 +31,9 @@ public class WriteText : MonoBehaviour
         characters = Instructions.ToCharArray();
         InstructionText.text = "";
         counter = 0;
-        delay = 0.07f;
-        TempDelay = 0.07f;
+        delay = 0.03f;
+        letterDelay = 0.03f;
+        switchDelay = 1.0f;
         switchText = true;
         done = false;
 	}
@@ -45,7 +47,7 @@ public class WriteText : MonoBehaviour
             {
                 if (delay <= 0)
                 {
-                    delay = TempDelay;
+                    delay = letterDelay;
                     switchText = true;
                 }
                 else
@@ -67,7 +69,7 @@ public class WriteText : MonoBehaviour
                                 whoseTalking = 1;
                             }
                             InstructionText.text += "\r\n\n\n\n";
-                            delay = TempDelay;
+                            delay = switchDelay;
                             switchText = true;
                             done = false;
                             counter++;

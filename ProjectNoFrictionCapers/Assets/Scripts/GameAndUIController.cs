@@ -26,8 +26,32 @@ public class GameAndUIController : MonoBehaviour
     public static bool HitTrigger = false;
     public static bool hitCop = false;
 
+    public GameObject room1Items;
+    public GameObject room2Items;
+    public GameObject room3Items;
+
     void Awake()
     {
+        if(room2Items)
+        {
+            foreach (Rigidbody rb in room2Items.GetComponentsInChildren<Rigidbody>())
+            {
+                if (!rb.isKinematic)
+                {
+                    rb.isKinematic = true;
+                }
+            }
+        }
+        if (room3Items)
+        {
+            foreach (Rigidbody rb in room3Items.GetComponentsInChildren<Rigidbody>())
+            {
+                if (!rb.isKinematic)
+                {
+                    rb.isKinematic = true;
+                }
+            }
+        }
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         HitTrigger = false;
         startTime = Time.time;
@@ -301,7 +325,7 @@ public class GameAndUIController : MonoBehaviour
             timeTakenText.text = "Time Taken  " + string.Format("{0:00}:{1:00}", (int)(timeTaken / 60) + "m", (int)(timeTaken % 60)+"s ");
             levelComplete.SetActive(true);
             Time.timeScale = 0f;
-            if (Advertisement.isSupported)
+            if (Advertisement.isSupported && RoomNumberCheckpoint == TotalRooms)
             {
                 StartCoroutine(ShowAdWhenReady());
             }
@@ -382,7 +406,6 @@ public class GameAndUIController : MonoBehaviour
 
     void AdFinished()
     {
-        Time.timeScale = 1.0f;
         continueGame.SetActive(true);
         retryLevel.SetActive(true);
     }
@@ -413,6 +436,40 @@ public class GameAndUIController : MonoBehaviour
             HitTrigger = false;
             RoomComplete = false;
             RoomNumberCheckpoint++;
+            if (RoomNumberCheckpoint == 2 && room2Items && room1Items)
+            {
+                foreach (Rigidbody rb in room2Items.GetComponentsInChildren<Rigidbody>())
+                {
+                    if (rb.isKinematic)
+                    {
+                        rb.isKinematic = false;
+                    }
+                }
+                foreach (Rigidbody rb in room1Items.GetComponentsInChildren<Rigidbody>())
+                {
+                    if (!rb.isKinematic)
+                    {
+                        rb.isKinematic = true;
+                    }
+                }
+            }
+            else if (RoomNumberCheckpoint == 3 && room3Items && room2Items)
+            {
+                foreach (Rigidbody rb in room3Items.GetComponentsInChildren<Rigidbody>())
+                {
+                    if (rb.isKinematic)
+                    {
+                        rb.isKinematic = false;
+                    }
+                }
+                foreach (Rigidbody rb in room2Items.GetComponentsInChildren<Rigidbody>())
+                {
+                    if (!rb.isKinematic)
+                    {
+                        rb.isKinematic = true;
+                    }
+                }
+            }
             UpdateRoomText();
             //timeTaken = 0f;
             levelComplete.SetActive(false);

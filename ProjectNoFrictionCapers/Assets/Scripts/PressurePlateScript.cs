@@ -7,12 +7,12 @@ public class PressurePlateScript : MonoBehaviour {
 
 	public GameObject DoorsObj; 
 
-	public GameObject Door01; 
-	public GameObject D01_LerpPoint;
-	public GameObject D01_start; 
-	public GameObject Door02; 
-	public GameObject D02_LerpPoint;
-	public GameObject D02_start; 
+	public GameObject DoorLeft; 
+	public GameObject DoorLeft_Open;
+	public GameObject DoorLeft_Closed; 
+	public GameObject DoorRight; 
+	public GameObject DoorRight_Open;
+    public GameObject DoorRight_Closed;
 
 	public bool DoorsOpen = false; 
 	public bool isTriggered = false;  
@@ -82,11 +82,18 @@ public class PressurePlateScript : MonoBehaviour {
 	public void endLerp()
 	{
 		isLerpin = false; 
-		if (DoorsOpen) {
-			DoorsOpen = false; 
+		if (DoorsOpen) 
+        {
+			DoorsOpen = false;
+            DoorRight.transform.position = DoorRight_Closed.transform.position;
+            DoorLeft.transform.position = DoorLeft_Closed.transform.position;
 			DoorsObj.GetComponent<DoorStatusScript>().isOpen = false; 
-		} else {
-			DoorsOpen = true; 
+		} 
+        else 
+        {
+			DoorsOpen = true;
+            DoorRight.transform.position = DoorRight_Open.transform.position;
+            DoorLeft.transform.position = DoorLeft_Open.transform.position;
 			DoorsObj.GetComponent<DoorStatusScript>().isOpen = true; 
 		}
 		LerpTimer = 0;  
@@ -94,17 +101,17 @@ public class PressurePlateScript : MonoBehaviour {
 
 	public void OpenDoors()
 	{
-		OpenDoor (Door01, D01_LerpPoint); 
-		OpenDoor (Door02, D02_LerpPoint); 
+        LerpDoor(DoorLeft, DoorLeft_Open);
+        LerpDoor(DoorRight, DoorRight_Open); 
 	}
 
 	public void CloseDoors()
 	{
-		OpenDoor (Door01, D01_start); 
-		OpenDoor (Door02, D02_start); 
+        LerpDoor(DoorLeft, DoorLeft_Closed);
+        LerpDoor(DoorRight, DoorRight_Closed); 
 	}
 
-	public void OpenDoor(GameObject Door, GameObject NewTarget)
+    public void LerpDoor(GameObject Door, GameObject NewTarget)
 	{
 		Door.transform.position = Vector3.Lerp(Door.transform.position, NewTarget.transform.position, smooth*Time.deltaTime);
 	}
