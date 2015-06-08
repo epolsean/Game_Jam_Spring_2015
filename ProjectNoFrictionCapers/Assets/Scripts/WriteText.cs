@@ -95,15 +95,8 @@ public class WriteText : MonoBehaviour
 
         if (ConversationDone)
         {
-            if (!skipped)
-            {
-                transform.root.GetComponent<CanvasGroup>().alpha -= Time.deltaTime * 0.1f;
-            }
-            else
-            {
-                transform.root.GetComponent<CanvasGroup>().alpha -= Time.deltaTime * 0.05f;
-            }
-            if(transform.root.GetComponent<CanvasGroup>().alpha <= 0.35f)
+            transform.root.GetComponent<CanvasGroup>().alpha -= Time.deltaTime * 0.1f;
+            if(transform.root.GetComponent<CanvasGroup>().alpha <= 0.55f)
             {
                 Application.LoadLevel("LevelSelect");
             }
