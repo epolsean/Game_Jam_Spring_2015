@@ -52,6 +52,7 @@ public class GameAndUIController : MonoBehaviour
                 }
             }
         }
+        Time.timeScale = 1.0f;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         HitTrigger = false;
         startTime = Time.time;
@@ -325,7 +326,7 @@ public class GameAndUIController : MonoBehaviour
             timeTakenText.text = "Time Taken  " + string.Format("{0:00}:{1:00}", (int)(timeTaken / 60) + "m", (int)(timeTaken % 60)+"s ");
             levelComplete.SetActive(true);
             Time.timeScale = 0f;
-            if (Advertisement.isSupported && RoomNumberCheckpoint == TotalRooms)
+            if (Advertisement.isSupported && RoomNumberCheckpoint == TotalRooms && Advertisement.isInitialized)
             {
                 StartCoroutine(ShowAdWhenReady());
             }
