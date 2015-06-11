@@ -70,13 +70,12 @@ public class PressurePlateConnection : MonoBehaviour
         {
             ParticleList[i].color = particleColor;
             Vector3 tempVec = (doorStartPos - plateStartPos);
-
-            if (Mathf.Abs(ParticleList[i].position.x - tempVec.x) >= 0.25f)
+            if (Mathf.Abs(ParticleList[i].position.x - doorStartPos.x) >= 0.25f)
             {
                 ParticleList[i].velocity = new Vector3(4 * Mathf.Sign(tempVec.x), 0, 0);
                 //ParticleList[i].position = Vector3.Lerp(ParticleList[i].position, new Vector3(tempVec.x, 0, ParticleList[i].position.z), Time.deltaTime);
             }
-            else if (Mathf.Abs(ParticleList[i].position.z - tempVec.z) >= 0.25f)
+            else if (Mathf.Abs(ParticleList[i].position.z - doorStartPos.z) >= 0.25f)
             {
                 ParticleList[i].velocity = new Vector3(0, 0, 4 * Mathf.Sign(tempVec.z));
                 //ParticleList[i].position = Vector3.Lerp(ParticleList[i].position, new Vector3(ParticleList[i].position.x, 0, tempVec.z), Time.deltaTime);
