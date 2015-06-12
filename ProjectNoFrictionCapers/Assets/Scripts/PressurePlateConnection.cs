@@ -21,6 +21,7 @@ public class PressurePlateConnection : MonoBehaviour
     {
         doorStartPos = door.transform.position;
         plateStartPos = plate.transform.position;
+        m_currentParticleEffect.gameObject.transform.position = plateStartPos;
         switch (chosenColor)
         {
             case AvailableColors.blue:
@@ -68,15 +69,28 @@ public class PressurePlateConnection : MonoBehaviour
         m_currentParticleEffect.GetParticles(ParticleList);
         for (int i = 0; i < ParticleList.Length; ++i)
         {
+            if(i == 1)
+            {
+                Debug.Log(ParticleList[i].position);
+            }
+            ParticleList[i].rotation = 0;
             ParticleList[i].color = particleColor;
             Vector3 tempVec = (doorStartPos - plateStartPos);
-            if (Mathf.Abs(ParticleList[i].position.x - doorStartPos.x) >= 0.25f)
+            Debug.Log(tempVec);
+            if (Mathf.Abs(ParticleList[i].position.x - tempVec.x) >= 0.25f)
             {
+                if (i == 1)
+                {
+                    Debug.Log(ParticleList[i].position);
+                    Debug.Log("moving in X direction");
+                }
+                
                 ParticleList[i].velocity = new Vector3(4 * Mathf.Sign(tempVec.x), 0, 0);
                 //ParticleList[i].position = Vector3.Lerp(ParticleList[i].position, new Vector3(tempVec.x, 0, ParticleList[i].position.z), Time.deltaTime);
             }
-            else if (Mathf.Abs(ParticleList[i].position.z - doorStartPos.z) >= 0.25f)
+            else if (Mathf.Abs(ParticleList[i].position.z - tempVec.z) >= 0.25f)
             {
+                Debug.Log("moving in Z direction");
                 ParticleList[i].velocity = new Vector3(0, 0, 4 * Mathf.Sign(tempVec.z));
                 //ParticleList[i].position = Vector3.Lerp(ParticleList[i].position, new Vector3(ParticleList[i].position.x, 0, tempVec.z), Time.deltaTime);
             }
