@@ -21,10 +21,9 @@ public class PressurePlateScript : MonoBehaviour
     public float smooth = 3.0F;
     public bool isLerpin = false;
     public float LerpTimer = 0.0f;
-    public float LerpsUpTime = 1.5f;
-    public float speed = 3.0F;
-    private float startTime;
-    private float journeyLength;
+    public float LerpsUpTime = 1.0f;
+
+    public bool OneTimePress = false;
 
     // Use this for initialization
     void Start()
@@ -63,17 +62,19 @@ public class PressurePlateScript : MonoBehaviour
             //other.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
             //other.transform.rotation = this.transform.rotation; 
             //other.GetComponent<Rigidbody>().isKinematic = true;
-            plateObj.transform.position -= 0.1f * plateObj.transform.up;
+            if(tag=="WallPlate")
+                plateObj.transform.position -= 0.1f * plateObj.transform.up;
+            else if(tag == "FloorPlate")
+                plateObj.transform.position -= 0.1f * plateObj.transform.up;
             isLerpin = true;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (DoorsObj.GetComponent<DoorStatusScript>().canTrigger && isTriggered)
+        if (DoorsObj.GetComponent<DoorStatusScript>().canTrigger && isTriggered && !OneTimePress)
         {
             DoorsOpen = true;
-            print("Floor: Close Doors");
             isTriggered = false;
             plateObj.transform.position += 0.1f * plateObj.transform.up;
             isLerpin = true;

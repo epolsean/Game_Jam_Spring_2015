@@ -41,15 +41,23 @@ public class CameraLerpController : MonoBehaviour {
 		if (other.tag == "ThiefDude") {
   
 			isLerpin = true;
-            if(PressurePlate && PressurePlate.tag == "WallPlate")
-            {
-                PressurePlate.GetComponent<WallPressurePlateScript>().DoorsOpen = true; //make sure doors are open before you can close them
-			    PressurePlate.GetComponent<WallPressurePlateScript>().isLerpin = true; //trigger doors to close
-            }
-            else if (PressurePlate && PressurePlate.tag == "FloorPlate")
+            if(PressurePlate)
             {
                 PressurePlate.GetComponent<PressurePlateScript>().DoorsOpen = true; //make sure doors are open before you can close them
 			    PressurePlate.GetComponent<PressurePlateScript>().isLerpin = true; //trigger doors to close
+                if (PressurePlate.transform.parent.GetComponent<PressurePlateConnection>())
+                {
+                    ParticleSystem m_currentParticleEffect = PressurePlate.transform.parent.GetComponent<PressurePlateConnection>().m_currentParticleEffect;
+                    ParticleSystem.Particle[] ParticleList = new ParticleSystem.Particle[m_currentParticleEffect.particleCount];
+                    m_currentParticleEffect.GetParticles(ParticleList);
+                    for (int i = 0; i < ParticleList.Length; ++i)
+                    {
+                        ParticleList[i].lifetime = 0;
+                    }
+                    m_currentParticleEffect.SetParticles(ParticleList, m_currentParticleEffect.particleCount);
+                    PressurePlate.transform.parent.GetComponent<PressurePlateConnection>().enabled = false;
+                    m_currentParticleEffect.Stop();
+                }
             }
             else
             {

@@ -20,9 +20,8 @@ public class WallPressurePlateScript : MonoBehaviour
     public bool isLerpin = false;
     public float LerpTimer = 0.0f;
     public float LerpsUpTime = 0.25f;
-    public float speed = 3.0F;
-    private float startTime;
-    private float journeyLength;
+
+    public bool OneTimePress = false;
 
     // Use this for initialization
     void Start()
@@ -69,7 +68,7 @@ public class WallPressurePlateScript : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (isTriggered && DoorsObj.GetComponent<DoorStatusScript>().canTrigger)
+        if (isTriggered && DoorsObj.GetComponent<DoorStatusScript>().canTrigger && !OneTimePress)
         {
             isTriggered = false;
             DoorsOpen = true;

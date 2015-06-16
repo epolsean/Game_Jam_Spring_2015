@@ -22,41 +22,43 @@ public class PressurePlateConnection : MonoBehaviour
         doorStartPos = door.transform.position;
         plateStartPos = plate.transform.position;
         m_currentParticleEffect.gameObject.transform.position = plateStartPos;
+        Vector3 tempVec = (doorStartPos - plateStartPos);
+        m_currentParticleEffect.startLifetime = (Mathf.Abs(tempVec.x) + Mathf.Abs(tempVec.z))/6f;
         switch (chosenColor)
         {
             case AvailableColors.blue:
                 {
-                    particleColor = Color.blue;
+                    m_currentParticleEffect.startColor = Color.blue;
                     return;
                 }
             case AvailableColors.cyan:
                 {
-                    particleColor = Color.cyan;
+                    m_currentParticleEffect.startColor = Color.cyan;
                     return;
                 }
             case AvailableColors.green:
                 {
-                    particleColor = Color.green;
+                    m_currentParticleEffect.startColor = Color.green;
                     return;
                 }
             case AvailableColors.yellow:
                 {
-                    particleColor = Color.yellow;
+                    m_currentParticleEffect.startColor = Color.yellow;
                     return;
                 }
             case AvailableColors.white:
                 {
-                    particleColor = Color.white;
+                    m_currentParticleEffect.startColor = Color.white;
                     return;
                 }
             case AvailableColors.red:
                 {
-                    particleColor = Color.red;
+                    m_currentParticleEffect.startColor = Color.red;
                     return;
                 }
             case AvailableColors.magenta:
                 {
-                    particleColor = Color.magenta;
+                    m_currentParticleEffect.startColor = Color.magenta;
                     return;
                 }
         }
@@ -69,29 +71,17 @@ public class PressurePlateConnection : MonoBehaviour
         m_currentParticleEffect.GetParticles(ParticleList);
         for (int i = 0; i < ParticleList.Length; ++i)
         {
-            if(i == 1)
-            {
-                Debug.Log(ParticleList[i].position);
-            }
             ParticleList[i].rotation = 0;
-            ParticleList[i].color = particleColor;
             Vector3 tempVec = (doorStartPos - plateStartPos);
             Debug.Log(tempVec);
             if (Mathf.Abs(ParticleList[i].position.x - tempVec.x) >= 0.25f)
             {
-                if (i == 1)
-                {
-                    Debug.Log(ParticleList[i].position);
-                    Debug.Log("moving in X direction");
-                }
-                
-                ParticleList[i].velocity = new Vector3(4 * Mathf.Sign(tempVec.x), 0, 0);
+                ParticleList[i].velocity = new Vector3(6 * Mathf.Sign(tempVec.x), 0, 0);
                 //ParticleList[i].position = Vector3.Lerp(ParticleList[i].position, new Vector3(tempVec.x, 0, ParticleList[i].position.z), Time.deltaTime);
             }
             else if (Mathf.Abs(ParticleList[i].position.z - tempVec.z) >= 0.25f)
             {
-                Debug.Log("moving in Z direction");
-                ParticleList[i].velocity = new Vector3(0, 0, 4 * Mathf.Sign(tempVec.z));
+                ParticleList[i].velocity = new Vector3(0, 0, 6 * Mathf.Sign(tempVec.z));
                 //ParticleList[i].position = Vector3.Lerp(ParticleList[i].position, new Vector3(ParticleList[i].position.x, 0, tempVec.z), Time.deltaTime);
             }
             else
