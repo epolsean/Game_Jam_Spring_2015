@@ -109,14 +109,14 @@ public class LevelSelector : MonoBehaviour
             level4.GetComponent<Button>().interactable = true;
             map1.GetComponent<Image>().sprite = draw2Finish;
             map1.GetComponent<Animator>().enabled = false;
-            //GoToCity2();
+            GoToCity2();
         }
         if (StatTracker.Level4_Complete == 1)
         {
             level4.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level5_Complete != 1 && UpdateMap)
             {
-                //GoToCity2();
+                GoToCity2();
                 map2.GetComponent<Animator>().Play("MapDraw1-2");
                 UpdateMap = false;
             }
@@ -133,7 +133,7 @@ public class LevelSelector : MonoBehaviour
             level5.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level6_Complete != 1 && UpdateMap)
             {
-                //GoToCity2();
+                GoToCity2();
                 map2.GetComponent<Animator>().Play("MapDraw2-3");
                 UpdateMap = false;
             }
@@ -142,17 +142,17 @@ public class LevelSelector : MonoBehaviour
                 map2.GetComponent<Animator>().enabled = false;
                 map2.GetComponent<Image>().sprite = draw2Finish;
             }
-            //level6.GetComponent<Image>().sprite = unlocked;
-            //level6.GetComponent<Button>().interactable = true;
+            level6.GetComponent<Image>().sprite = unlocked;
+            level6.GetComponent<Button>().interactable = true;
         }
         if (StatTracker.Level6_Complete == 1)
         {
-            //City3Button.GetComponent<Button>().interactable = true;
-            //City3Button.GetComponent<Image>().sprite = unlocked;
-            //City3Button.GetComponentInChildren<Text>().text = "City 3";
+            City3Button.GetComponent<Button>().interactable = true;
+            City3Button.GetComponent<Image>().sprite = unlocked;
+            City3Button.GetComponentInChildren<Text>().text = "City 3";
             level6.GetComponent<Image>().sprite = completed;
-            //level7.GetComponent<Image>().sprite = unlocked;
-            //level7.GetComponent<Button>().interactable = true;
+            level7.GetComponent<Image>().sprite = unlocked;
+            level7.GetComponent<Button>().interactable = true;
             map2.GetComponent<Image>().sprite = draw2Finish;
             map2.GetComponent<Animator>().enabled = false;
         }
@@ -161,7 +161,7 @@ public class LevelSelector : MonoBehaviour
             level7.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level8_Complete != 1 && UpdateMap)
             {
-                //GoToCity3();
+                GoToCity3();
                 map3.GetComponent<Animator>().Play("MapDraw1-2");
                 UpdateMap = false;
             }
@@ -178,7 +178,7 @@ public class LevelSelector : MonoBehaviour
             level8.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level9_Complete != 1 && UpdateMap)
             {
-                //GoToCity3();
+                GoToCity3();
                 map3.GetComponent<Animator>().Play("MapDraw2-3");
                 UpdateMap = false;
             }
@@ -265,7 +265,7 @@ public class LevelSelector : MonoBehaviour
     {
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level2Music");
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
-        GameAndUIController.TotalRooms = 2;
+        GameAndUIController.TotalRooms = 1;
         LoadingScreen.levelToLoad = "Level5";
         Application.LoadLevel("LoadingScreen");
     }
@@ -274,7 +274,7 @@ public class LevelSelector : MonoBehaviour
     {
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level2Music");
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
-        GameAndUIController.TotalRooms = 2;
+        GameAndUIController.TotalRooms = 1;
         LoadingScreen.levelToLoad = "Level6";
         Application.LoadLevel("LoadingScreen");
     }
@@ -283,7 +283,7 @@ public class LevelSelector : MonoBehaviour
     {
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level3Music");
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
-        GameAndUIController.TotalRooms = 2;
+        GameAndUIController.TotalRooms = 1;
         LoadingScreen.levelToLoad = "Level7";
         Application.LoadLevel("LoadingScreen");
     }
@@ -292,7 +292,7 @@ public class LevelSelector : MonoBehaviour
     {
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level3Music");
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
-        GameAndUIController.TotalRooms = 3;
+        GameAndUIController.TotalRooms = 1;
         LoadingScreen.levelToLoad = "Level8";
         Application.LoadLevel("LoadingScreen");
     }
@@ -301,7 +301,7 @@ public class LevelSelector : MonoBehaviour
     {
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("Music/Level3Music");
         GameObject.Find("MenuMusic").GetComponent<AudioSource>().Play();
-        GameAndUIController.TotalRooms = 3;
+        GameAndUIController.TotalRooms = 1;
         LoadingScreen.levelToLoad = "Level9";
         Application.LoadLevel("LoadingScreen");
     }
