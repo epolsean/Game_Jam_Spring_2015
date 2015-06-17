@@ -18,12 +18,10 @@ public class WriteText : MonoBehaviour
 
     bool done = false;
     bool ConversationDone = false;
-    bool skipped = false;
 
 	// Use this for initialization
 	void Start () 
     {
-        skipped = false;
         ConversationDone = false;
         whoseTalking = 1;
         InstructionText = GetComponent<Text>();
@@ -105,7 +103,6 @@ public class WriteText : MonoBehaviour
 
     public void GotClicked()
     {
-        skipped = true;
         done = true;
         InstructionText.text = "";
         for(int i = 0;i<characters.Length;i++)
