@@ -109,14 +109,14 @@ public class LevelSelector : MonoBehaviour
             level4.GetComponent<Button>().interactable = true;
             map1.GetComponent<Image>().sprite = draw2Finish;
             map1.GetComponent<Animator>().enabled = false;
-            GoToCity2();
+            //GoToCity2();
         }
         if (StatTracker.Level4_Complete == 1)
         {
             level4.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level5_Complete != 1 && UpdateMap)
             {
-                GoToCity2();
+                //GoToCity2();
                 map2.GetComponent<Animator>().Play("MapDraw1-2");
                 UpdateMap = false;
             }
@@ -133,7 +133,7 @@ public class LevelSelector : MonoBehaviour
             level5.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level6_Complete != 1 && UpdateMap)
             {
-                GoToCity2();
+                //GoToCity2();
                 map2.GetComponent<Animator>().Play("MapDraw2-3");
                 UpdateMap = false;
             }
@@ -155,13 +155,14 @@ public class LevelSelector : MonoBehaviour
             level7.GetComponent<Button>().interactable = true;
             map2.GetComponent<Image>().sprite = draw2Finish;
             map2.GetComponent<Animator>().enabled = false;
+            //GoToCity3();
         }
         if (StatTracker.Level7_Complete == 1)
         {
             level7.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level8_Complete != 1 && UpdateMap)
             {
-                GoToCity3();
+                //GoToCity3();
                 map3.GetComponent<Animator>().Play("MapDraw1-2");
                 UpdateMap = false;
             }
@@ -178,7 +179,7 @@ public class LevelSelector : MonoBehaviour
             level8.GetComponent<Image>().sprite = completed;
             if (StatTracker.Level9_Complete != 1 && UpdateMap)
             {
-                GoToCity3();
+                //GoToCity3();
                 map3.GetComponent<Animator>().Play("MapDraw2-3");
                 UpdateMap = false;
             }

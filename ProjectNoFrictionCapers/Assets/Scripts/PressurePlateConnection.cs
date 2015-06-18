@@ -23,7 +23,7 @@ public class PressurePlateConnection : MonoBehaviour
         plateStartPos = plate.transform.position;
         m_currentParticleEffect.gameObject.transform.position = plateStartPos;
         Vector3 tempVec = (doorStartPos - plateStartPos);
-        m_currentParticleEffect.startLifetime = (Mathf.Abs(tempVec.x) + Mathf.Abs(tempVec.z))/6f;
+        m_currentParticleEffect.startLifetime = (Mathf.Abs(tempVec.x) + Mathf.Abs(tempVec.z))/3f;
         switch (chosenColor)
         {
             case AvailableColors.blue:
@@ -76,12 +76,12 @@ public class PressurePlateConnection : MonoBehaviour
             Debug.Log(tempVec);
             if (Mathf.Abs(ParticleList[i].position.x - tempVec.x) >= 0.25f)
             {
-                ParticleList[i].velocity = new Vector3(6 * Mathf.Sign(tempVec.x), 0, 0);
+                ParticleList[i].velocity = new Vector3(3 * Mathf.Sign(tempVec.x), 0, 0);
                 //ParticleList[i].position = Vector3.Lerp(ParticleList[i].position, new Vector3(tempVec.x, 0, ParticleList[i].position.z), Time.deltaTime);
             }
             else if (Mathf.Abs(ParticleList[i].position.z - tempVec.z) >= 0.25f)
             {
-                ParticleList[i].velocity = new Vector3(0, 0, 6 * Mathf.Sign(tempVec.z));
+                ParticleList[i].velocity = new Vector3(0, 0, 3 * Mathf.Sign(tempVec.z));
                 //ParticleList[i].position = Vector3.Lerp(ParticleList[i].position, new Vector3(ParticleList[i].position.x, 0, tempVec.z), Time.deltaTime);
             }
             else
